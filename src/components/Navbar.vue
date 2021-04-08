@@ -1,6 +1,6 @@
 <template>
     <div class="navbar white--text">
-        <span>logo</span>
+        <span><img src="../assets/logoo.png" class="logo"></span>
         <div class="navcontent">
             <v-btn class="buttons white--text" text>home</v-btn>
             <v-btn class="buttons white--text" text>categorii</v-btn>
@@ -38,4 +38,12 @@
         position: relative;
         right: 40%;
     }
+
+    .logo {
+        padding: 0;
+        margin: 0;
+        height:55%;
+        width: 55%;
+    }
+
 </style>

@@ -5,7 +5,8 @@
         </template>
         <v-card>
             <link rel="preconnect" href="https://fonts.gstatic.com">
-            <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300&family=Arvo&family=Crimson+Text&family=Exo:wght@100&family=Sriracha&family=Tenor+Sans&display=swap" rel="stylesheet">
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 
             <form class="formdesign" @submit.prevent="submitLogIn">
                 <div @click="dialogLogIn = !dialogLogIn"><v-icon class="close">mdi-close</v-icon></div>
@@ -152,14 +153,14 @@
     .basePage {
         justify-content: center;
         background-color: floralwhite;
-        font-family: 'Arvo', sans-serif;
+        font-family: 'Lato', sans-serif;
     }
     .formdesign {
         align: center;
         text-align: center;
-        background-color: ghostwhite;
         padding: 60px;
-        font-family: 'Arvo', serif;
+        font-family: 'Lato', sans-serif;
+        background: whitesmoke;
     }
     .bttn {
         margin-left: 6px;
@@ -171,13 +172,13 @@
 
     .text {
         color: gray;
-        font-family: 'Arvo', serif;
+        font-family: 'Lato', sans-serif;
     }
     .separator {
         display: flex;
         align-items: center;
         text-align: center;
-        font-family: 'Arvo', serif;
+        font-family: 'Lato', sans-serif;
     }
     .separator::before,
     .separator::after {
