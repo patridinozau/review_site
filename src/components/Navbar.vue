@@ -3,7 +3,6 @@
     <span><img src="../assets/logoo.png" class="logo"></span>
     <div class="navcontent">
       <router-link to="/" style="text-decoration: none" class="white--text font">HOME</router-link>
-<!--      <v-btn class="buttons font white&#45;&#45;text" text>home</v-btn>-->
       <v-btn class="buttons font white--text" text>categorii</v-btn>
       <router-link to="despreNoi" style="text-decoration: none" class="white--text font">DESPRE NOI</router-link>
     </div>
