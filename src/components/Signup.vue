@@ -1,11 +1,12 @@
 <template>
-    <v-dialog class="basePage" width="500" v-model="dialogSignUp">
+    <v-dialog class="formdesign" width="500" v-model="dialogSignUp">
         <template v-slot:activator="{ on }">
             <v-btn large class="homebutton text--black font-weight-bold" plain v-on="on">Sign Up</v-btn>
         </template>
-        <v-card>
-            <link rel="preconnect" href="https://fonts.gstatic.com">
-            <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300&family=Arvo&family=Crimson+Text&family=Exo:wght@100&family=Sriracha&family=Tenor+Sans&display=swap" rel="stylesheet">
+        <v-card >
+          <link rel="preconnect" href="https://fonts.gstatic.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com">
+          <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 
             <form class="formdesign" @submit.prevent="submitForm">
                 <div @click="dialogSignUp = !dialogSignUp"><v-icon class="close">mdi-close</v-icon></div>
@@ -185,15 +186,22 @@
     @import url('https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap');
     .basePage {
         justify-content: center;
-        background-color: floralwhite;
-        font-family: 'Tenor Sans', sans-serif;
+        font-family: 'Lato', sans-serif;
     }
     .formdesign {
         align: center;
         text-align: center;
-        background-color: ghostwhite;
         padding: 60px;
-        font-family: 'Arvo', serif;
+        font-family: 'Lato', sans-serif;
+      background: whitesmoke;
+      /*background: linear-gradient(*/
+      /*    to right bottom,*/
+      /*    rgba(255, 255, 255, 0.7),*/
+      /*    rgba(255, 255, 255, 0.3)*/
+      /*);*/
+      /*border-radius: 2rem;*/
+      /*z-index: 2;*/
+      /*backdrop-filter: blur(2rem);*/
     }
     .bttn {
         margin-left: 6px;
@@ -205,13 +213,13 @@
 
     .text {
         color: gray;
-        font-family: 'Arvo', serif;
+      font-family: 'Lato', sans-serif;
     }
     .separator {
         display: flex;
         align-items: center;
         text-align: center;
-        font-family: 'Arvo', serif;
+      font-family: 'Lato', sans-serif;
     }
     .separator::before,
     .separator::after {
