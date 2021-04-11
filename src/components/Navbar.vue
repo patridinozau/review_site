@@ -2,8 +2,8 @@
   <div class="navbar white--text">
     <span><img src="../assets/logoo.png" class="logo"></span>
     <div class="navcontent">
-      <router-link to="/" style="text-decoration: none" class="white--text font">HOME</router-link>
-      <v-btn class="buttons font white--text" text>categorii</v-btn>
+      <router-link to="/" style="text-decoration: none" class="white--text font">ACASĂ</router-link>
+      <v-btn class="buttons font white--text" text>CATEGORII</v-btn>
       <router-link to="despreNoi" style="text-decoration: none" class="white--text font">DESPRE NOI</router-link>
     </div>
   </div>

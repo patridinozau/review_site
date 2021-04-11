@@ -1,7 +1,7 @@
 <template>
   <v-dialog class="basePage" width="500" v-model="dialogLogIn">
     <template v-slot:activator="{ on }">
-      <v-btn large class="homebutton text--black font-weight-bold" plain v-on="on">Log in</v-btn>
+      <v-btn large class="homebutton text--black font-weight-bold" plain v-on="on">Autentifică-te</v-btn>
     </template>
     <v-card>
       <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -10,12 +10,12 @@
 
       <form class="formdesign" @submit.prevent="submitLogIn">
         <div @click="dialogLogIn = !dialogLogIn"><v-icon class="close">mdi-close</v-icon></div>
-        <h1>Log in!</h1>
+        <h1>Autentifică-te!</h1>
         <br />
         <hr />
         <br />
         <div>
-          <span class="text">Log in with</span>
+          <span class="text">Autentifică-te cu</span>
         </div>
         <br />
         <div class="wrapper">
@@ -33,20 +33,20 @@
           </div>
         </div>
         <br />
-        <div class="separator text">or via E-Mail</div>
+        <div class="separator text">sau prin E-Mail</div>
         <br />
 
         <v-text-field
             v-model="email"
             :error-messages="emailErrors"
-            label="E-mail"
+            label="E-Mail"
             required
             @input="$v.email.$touch()"
             @blur="$v.email.$touch()">
         </v-text-field>
 
         <v-text-field
-            label="Password"
+            label="Parolă"
             type="password"
             v-model="password"
             :error-messages="passwordErrors"
@@ -56,16 +56,16 @@
         </v-text-field>
         <br />
         <div align="center">
-          <v-btn class="mr-4" type="submit" :loading="loading">submit</v-btn>
-          <v-btn class="bttn" @click="clear">clear</v-btn>
+          <v-btn class="mr-4" type="submit" :loading="loading">trimite</v-btn>
+          <v-btn class="bttn" @click="clear">golește</v-btn>
         </div>
         <br />
         <br />
         <hr class="text"/>
         <div class="text">
-          <span>Don't have an account yet?</span>
+          <span>Încă nu ți-ai creat un cont?</span>
           <v-btn text class="ml-3" float="right"
-                 @click="dialogLogIn = !dialogLogIn">Sign up</v-btn>
+                 @click="dialogLogIn = !dialogLogIn">Înscrie-te</v-btn>
         </div>
       </form>
     </v-card>
@@ -96,15 +96,15 @@ export default {
     emailErrors () {
       const errors = []
       if (!this.$v.email.$dirty) return errors
-      !this.$v.email.email && errors.push('Must be valid e-mail')
-      !this.$v.email.required && errors.push('E-mail is required')
+      !this.$v.email.email && errors.push('E-Mailul trebuie să fie valid')
+      !this.$v.email.required && errors.push('E-mailul este obligatoriu')
       return errors
     },
     passwordErrors () {
       const errors = []
       if(!this.$v.password.$dirty) return errors
-      !this.$v.password.required && errors.push('Password is required')
-      !this.$v.password.minLength && errors.push('Password must be at least 6 characters long')
+      !this.$v.password.required && errors.push('Parola este obligatorie')
+      !this.$v.password.minLength && errors.push('Parola trebuie să conțină cel puțin 6 caractere')
       return errors
     },
   },

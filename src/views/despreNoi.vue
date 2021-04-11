@@ -16,14 +16,20 @@
         <br />
         <v-card class="card">
           <v-card-text class="card_text">
-              <div align="center" style="font-weight:800; font-size: 34px;" class="font">
-                  <span class="font" style="font-weight:800; font-size: 34px;">- Darius -</span>
+              <div align="center" style="padding:15px;font-weight:800; font-size: 34px;" class="font">
+                  <span class="font" style="padding:15px; font-weight:800; font-size: 34px;">- Darius -</span>
+              </div>
+            <br />
+              <div align="center">
+                <v-avatar size="130" style="">
+                  <img src="../assets/darius.jpg" />
+                </v-avatar>
               </div>
             <br />
               <div>
-                  <span class="font" style="font-weight: 200; font-size: 17px; align-content:center; display: flex;">Calitati: </span>
+                  <span class="font" style="padding:15px;font-weight: 200; font-size: 17px; align-content:center; display: flex;">Trei cuvinte prin care colegii de echipă l-au descris: </span>
                   <ul style="list-style-position: inside; list-style-type: square">
-                    <li>ambitios</li>
+                    <li>ambițios</li>
                     <li>bun lider</li>
                     <li>foarte muncitor</li>
                   </ul>
@@ -35,12 +41,18 @@
         </v-card>
         <v-card class="card">
           <v-card-text class="card_text">
-            <div align="center" style="font-weight:800; font-size: 34px;" class="font">
-              <span class="font" style="font-weight:800; font-size: 34px;">- Iulian -</span>
+            <div align="center" style="padding:15px;font-weight:800; font-size: 34px;" class="font">
+              <span class="font" style="padding:15px;font-weight:800; font-size: 34px;">- Iulian -</span>
+            </div>
+            <br />
+            <div align="center">
+              <v-avatar size="130" style="">
+                <img src="../assets/darius.jpg" class />
+              </v-avatar>
             </div>
             <br />
             <div>
-              <span class="font" style="font-weight: 200; font-size: 17px; align-content:center; display: flex;">Calitati: </span>
+              <span class="font" style="padding:15px;font-weight: 200; font-size: 17px; align-content:center; display: flex;">Trei cuvinte prin care colegii de echipă l-au descris: </span>
               <ul style="list-style-position: inside; list-style-type: square">
                 <li>harnic</li>
                 <li>respectuos</li>
@@ -54,14 +66,20 @@
         </v-card>
         <v-card class="card">
           <v-card-text class="card_text">
-            <div align="center" style="font-weight:800; font-size: 34px;" class="font">
-              <span class="font" style="font-weight:800; font-size: 34px;">- Robert -</span>
+            <div align="center" style="padding:15px;font-weight:800; font-size: 34px;" class="font">
+              <span class="font" style=" padding:15px;font-weight:800; font-size: 34px;">- Robert -</span>
+            </div>
+            <br />
+            <div align="center">
+              <v-avatar size="130" style="">
+                <img src="../assets/robert.jpg" />
+              </v-avatar>
             </div>
             <br />
             <div>
-              <span class="font" style="font-weight: 200; font-size: 17px; align-content:center; display: flex;">Calitati: </span>
+              <span class="font" style="padding:15px;font-weight: 200; font-size: 17px; align-content:center; display: flex;">Trei cuvinte prin care colegii de echipă l-au descris: </span>
               <ul style="list-style-position: inside; list-style-type: square">
-                <li>destept</li>
+                <li>deștept</li>
                 <li>atent</li>
                 <li>meticulos</li>
               </ul>
@@ -73,27 +91,51 @@
         </v-card>
         <v-card class="card">
           <v-card-text class="card_text">
-            <div align="center" style="font-weight:800; font-size: 34px;" class="font">
-              <span class="font" style="font-weight:800; font-size: 34px;">- Patri -</span>
+            <div align="center" style="padding:15px;font-weight:800; font-size: 34px;" class="font">
+              <span class="font" style="padding:15px;font-weight:800; font-size: 34px;">- Patri -</span>
+            </div>
+            <br />
+            <div align="center">
+              <v-avatar size="130" style="">
+                <img src="../assets/patri.jpg" />
+              </v-avatar>
             </div>
             <br />
             <div>
-              <span class="font" style="font-weight: 200; font-size: 17px; align-content:center; display: flex;">Calitati: </span>
+              <span class="font" style="padding:15px; font-weight: 200; font-size: 17px; align-content:center; display: flex;">Trei cuvinte prin care colegii de echipă au descris-o: </span>
               <ul style="list-style-position: inside; list-style-type: square">
-                <li>ingenioasa</li>
-                <li>silitoare</li>
-                <li>creativa</li>
+                <li>perfecționistă</li>
+                <li>motivată</li>
+                <li>creativă</li>
               </ul>
             </div>
             <div>
-              <h3>Fun fact: stie sa cante la ukulele</h3>
+              <h3>Fun fact: știe să cânte la ukulele</h3>
             </div>
           </v-card-text>
         </v-card>
       </div>
       <div style="padding:20px" class="separator"><v-icon>mdi-chevron-triple-left</v-icon></div>
       <div>
+        <div class="content-part">
+          <div class="content-box">
+            <div class="content-title">
+              <h1>Care este scopul site-ului nostru?</h1>
+            </div>
 
+            <div class="content-parag">
+              <p>
+                  De la inceputul pandemiei de covid-19, viata fiecaruia dintre noi s-a schimbat radical.
+
+              </p>
+            </div>
+          </div>
+
+          <div class="content-image">
+            <img src="../assets/team-meeting-illustration.png" />
+          </div>
+
+        </div>
       </div>
     </div>
   </v-main>
@@ -161,6 +203,26 @@ export default {
 }
 .separator:not(:empty)::after {
   margin-left: .25em;
+}
+
+.content-box{
+  width: 40%;
+  padding: 20px;
+  margin: 5px 0px 5px 15px;
+  text-align: center;
+}
+.content-title{
+  margin-bottom: 15px;
+  font-weight: 900;
+  font-family: 'Archivo Black', sans-serif;
+}
+.content-parag{
+  font-size: 20px;
+  font-weight: 100;
+}
+.content-image{
+  margin-right: 30px;
+  padding-right: 20px;
 }
 
 </style>
