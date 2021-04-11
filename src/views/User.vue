@@ -1,0 +1,82 @@
+<template>
+  <v-main class="main">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <br><br>
+    <div class="profileCard" >
+      <v-divider vertical dark inset/>
+      <table>
+        <tr>
+          <td>
+            <img src="https://i0.wp.com/365webresources.com/wp-content/uploads/2016/09/FREE-PROFILE-AVATARS.png?resize=502%2C494&ssl=1" width="300" height="300" class="profilePic">
+            <p>Text extra pt ceva?</p>
+          </td>
+          <td>
+            <p>Email: test@provider.com</p>
+            <p>Nume: NumeProfil</p>
+          </td>
+        </tr>
+        <tr>
+          <td><hr class="tableLine"></td>
+          <td><hr class="tableLine"></td>
+        </tr>
+        <tr>
+          <td>
+          <H4>Descriere pt persoana</H4><br>
+            <p class="descriere">Ad quia nihil est. Dicta dolor consectetur deserunt eveniet eius rerum voluptatem non. Unde perspiciatis quos placeat placeat quasi. Repudiandae facilis aperiam ea. Illum quia velit sed nihil ut in aperiam.</p>
+          </td>
+          <td>
+            <p class="descriere">Nr de review-uri: 1337</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <br><br>
+  </v-main>
+</template>
+
+<script>
+export default {
+  name: "User"
+}
+</script>
+
+<style scoped>
+.main {
+  background-color: #f2ffff;
+  font-family: 'Lato', sans-serif;
+}
+.profileCard {
+  position: center;
+  margin: auto;
+  /*display:flex;
+  justify-content: space-between;*/
+  top: 5px;
+  left: 0;
+  width: 85%;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+.profilePic{
+  border-radius: 10px;
+}
+th, td {
+  /*max-width:150px;*/
+  padding-left: 150px;
+  padding-right: 150px;
+}
+.descriere{
+  text-align: justify;
+  max-width: 300px;
+}
+table{
+  position:center;
+  margin:auto;
+
+}
+.tableLine{
+  width:90%;
+  margin:auto;
+}
+</style>
