@@ -26,7 +26,7 @@
         width: 100%;
         padding: 8px;
         background-color: hsl(135, 0%, 25%);
-
+        z-index: 100000;
     }
 
     .navcontent {
