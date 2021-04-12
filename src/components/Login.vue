@@ -1,4 +1,5 @@
 <template>
+
   <v-dialog class="basePage" width="500" v-model="dialogLogIn">
     <template v-slot:activator="{ on }">
       <v-btn large class="homebutton text--black font-weight-bold" plain v-on="on">Autentifică-te</v-btn>
@@ -232,4 +233,5 @@ export default {
   cursor:pointer;
   background-color: #e3e3fd;
 }
+
 </style>

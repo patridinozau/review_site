@@ -183,6 +183,7 @@ export default {
 </script>
 
 <style scoped>
+
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap');
 .basePage {
   justify-content: center;
@@ -273,4 +274,5 @@ export default {
   cursor:pointer;
   background-color: #e3e3fd;
 }
+
 </style>
