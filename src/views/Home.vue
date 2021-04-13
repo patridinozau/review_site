@@ -3,14 +3,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Roboto:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
-    <Navbar />
+    <nav-bar />
 
     <div class="first_content">
       <div class="content">
         <div class="content-col content-text">
           <p>Doresti si tu sa lasi un review unui produs? Creeaza-ti un cont chiar acum</p>
           <br />
-          <Signup />
+          <sign-up />
         </div>
         <div class="content-col mr-15">
           <img src="../assets/rating.png" class="img" />
@@ -20,7 +20,7 @@
         <div class="content-col subcontent-text">
           <p>Ai deja un cont? Conecteaza-te la el aici</p>
           <br />
-          <Login />
+          <log-in />
         </div>
       </div>
     </div>
@@ -88,9 +88,9 @@ import Login from "../components/Login";
 import Navbar from "../components/Navbar";
 export default {
   components: {
-    Signup,
-    Login,
-    Navbar
+    'sign-up': Signup,
+    'log-in': Login,
+    'nav-bar': Navbar
   }
 }
 </script>

@@ -4,20 +4,18 @@
     <div class="navcontent">
       <router-link to="/" style="text-decoration: none" class="white--text font">ACASĂ</router-link>
       <v-btn class="buttons font white--text" text>CATEGORII</v-btn>
-      <router-link to="despreNoi" style="text-decoration: none" class="white--text font">DESPRE NOI</router-link>
+      <router-link to="/despreNoi" style="text-decoration: none" class="white--text font">DESPRE NOI</router-link>
     </div>
   </div>
 </template>
 
 <script>
-import despreNoi from '../views/despreNoi.vue'
-import Home from '../views/Home.vue'
+
 
 export default {
-  name : 'Navbar',
-  components:
-    despreNoi,
-    Home
+  name: 'nav-bar',
+  components:{}
+
 }
 </script>
 

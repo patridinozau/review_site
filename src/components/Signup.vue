@@ -9,7 +9,7 @@
       <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 
       <form class="formdesign" @submit.prevent="submitForm">
-        <div @click="dialogSignUp = !dialogSignUp"><v-icon class="close">mdi-close</v-icon></div>
+        <div @click="dialogSignUp = false"><v-icon class="close">mdi-close</v-icon></div>
         <h1>Înscrie-te!</h1>
         <br />
         <hr />
@@ -75,7 +75,7 @@
         <div class="text">
           <span>Ai deja un cont?</span>
           <v-btn class="ml-3" text float="right"
-                 @click="dialogSignUp = !dialogSignUp">Autentifică-te</v-btn>
+                 @click="dialogSignUp = false">Autentifică-te</v-btn>
         </div>
       </form>
     </v-card>
@@ -127,49 +127,30 @@ export default {
       !this.$v.password.minLength && errors.push('Parola trebuie să conțină cel puțin 6 caractere')
       return errors
     },
+    user () {
+      return this.$store.getters.user
+    }
+  },
+  watch: {
+    user (value) {
+      if(value !== null && value !== undefined) {
+        this.dialogSignUp = false
+        this.loading = false
+      }
+    }
   },
   methods: {
     submitForm () {
       this.loading = true;
-      firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then(cred => {
-        return firebase.firestore().collection('users').doc(cred.user.uid).set({
-          username: this.name
-        });
-      }).then(() => {
-        this.dialogSignUp = false;
-        this.loading = false;
-      }).catch((err) => {
-        console.log(err)
-      });
+      this.$store.dispatch('signUserUp', {email: this.email, password: this.password})
     },
     googleSignUp () {
       var provider = new firebase.auth.GoogleAuthProvider();
-      firebase.auth().signInWithPopup(provider).then((res) => {
-        return firebase.firestore().collection('users').doc(res.user.uid).set({
-          username: res.additionalUserInfo.profile.name
-        }).then(() => {
-          console.log('Success sign up with Google')
-          this.dialogSignUp = false;
-        });
-      }).catch((err) => {
-        console.log(err)
-        console.log('Failed to sign up with Gooogle')
-      });
+      this.$store.dispatch('signUserUpWithGoogle', provider)
     },
     facebookSignUp () {
       var provider = new firebase.auth.FacebookAuthProvider();
-      firebase.auth().signInWithPopup(provider).then((res) => {
-        return firebase.firestore().collection('users').doc(res.user.uid).set({
-          username: res.additionalUserInfo.profile.name
-        }).then(() => {
-          console.log(res)
-          console.log('Success sign up with Facebook')
-          this.dialogSignUp = false;
-        });
-      }).catch((err) => {
-        console.log(err)
-        console.log('Failed to sign up with Facebook')
-      })
+      this.$store.dispatch('signUserUpWithFacebook', provider)
     },
     clear () {
       this.$v.$reset()

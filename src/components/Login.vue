@@ -10,7 +10,7 @@
       <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 
       <form class="formdesign" @submit.prevent="submitLogIn">
-        <div @click="dialogLogIn = !dialogLogIn"><v-icon class="close">mdi-close</v-icon></div>
+        <div @click="dialogLogIn = false"><v-icon class="close">mdi-close</v-icon></div>
         <h1>Autentifică-te!</h1>
         <br />
         <hr />
@@ -66,7 +66,7 @@
         <div class="text">
           <span>Încă nu ți-ai creat un cont?</span>
           <v-btn text class="ml-3" float="right"
-                 @click="dialogLogIn = !dialogLogIn">Înscrie-te</v-btn>
+                 @click="dialogLogIn = false">Înscrie-te</v-btn>
         </div>
       </form>
     </v-card>
@@ -87,7 +87,6 @@ export default {
     password: {required, minLength: minLength(6)}
   },
   data: () => ({
-    name: '',
     email: '',
     password: '',
     loading: false,
@@ -108,42 +107,37 @@ export default {
       !this.$v.password.minLength && errors.push('Parola trebuie să conțină cel puțin 6 caractere')
       return errors
     },
+    user () {
+      return this.$store.getters.user
+    }
+  },
+  watch: {
+    user (value) {
+      if(value !== null && value !== undefined) {
+        this.dialogLogIn = false
+        this.loading = false
+      }
+    }
   },
   methods: {
     submitLogIn () {
-      this.loading = true;
-      firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(() => {
-        this.dialogLogIn = false;
-        this.loading = false;
-      }).catch((err) => {
-        console.log(err)
-      })
+      this.loading = true
+      this.$store.dispatch('logUserIn', {email: this.email, password: this.password})
     },
     googleLogIn () {
       var provider = new firebase.auth.GoogleAuthProvider();
-      firebase.auth().signInWithPopup(provider).then(() => {
-        console.log('Success logged in with Google')
-        this.dialogLogIn = false;
-      }).catch((err) => {
-        console.log(err)
-        console.log('Failed to log in with Gooogle')
-      });
+      this.$store.dispatch('logUserInWithGoogle', provider)
     },
     facebookLogIn () {
       var provider = new firebase.auth.FacebookAuthProvider();
-      firebase.auth().signInWithPopup(provider).then(() => {
-        console.log('Success logged in with Facebook')
-        this.dialogLogIn = false;
-      }).catch((err) => {
-        console.log(err)
-        console.log('Failed to log in with Facebook')
-      })
+      this.$store.dispatch('logUserInWithFacebook', provider)
     },
     clear () {
       this.$v.$reset()
       this.name = ''
       this.email = ''
       this.password = ''
+      this.loading = false
     },
   },
 }

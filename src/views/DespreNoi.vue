@@ -3,7 +3,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Roboto:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
-    <Navbar />
+    <nav-bar />
     <div>
       <br />
       <br />
@@ -142,7 +142,14 @@
 </template>
 
 <script>
-export default {
+
+  import Navbar from "../components/Navbar";
+
+  export default {
+    name: 'DespreNoi',
+    components: {
+      'nav-bar': Navbar
+    }
 }
 </script>
 
