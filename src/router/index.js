@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import DespreNoi from '../views/DespreNoi.vue'
 import User from '../views/User.vue'
 import store from "../store";
+import categorii from "../components/categorii";
 
 Vue.use(VueRouter)
 
@@ -29,6 +30,11 @@ const routes = [
         next('/')
       }
     }
+  },
+  {
+    path: '/categorii',
+    name: 'categorii',
+    component: categorii
   }
 
 ]

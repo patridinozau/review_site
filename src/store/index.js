@@ -39,32 +39,23 @@ export default new Vuex.Store({
       })
     },
     logUserIn ({commit}, payload) {
-      firebase.auth().signInWithEmailAndPassword(payload.email, payload.password).then(user => {
-        const userInfo = {
-          email: user.email,
-        }
-        commit('userInfo', userInfo)
+      firebase.auth().signInWithEmailAndPassword(payload.email, payload.password).then(() => {
+
       }).catch(err => {
         console.log(err)
       })
     },
     logUserInWithGoogle ({commit}, payload) {
-      firebase.auth().signInWithPopup(payload).then(user => {
-        const userInfo = {
-          uid: user.uid,
-        }
-        commit('userInfo', userInfo)
+      firebase.auth().signInWithPopup(payload).then(() => {
+
       }).catch(err => {
         console.log(err)
       })
 
     },
     logUserInWithFacebook ({commit}, payload) {
-      firebase.auth().signInWithPopup(payload).then(user => {
-        const userInfo = {
-          uid: user.uid,
-        }
-        commit('userInfo', userInfo)
+      firebase.auth().signInWithPopup(payload).then(() => {
+
       }).catch(err => {
         console.log(err)
       })
