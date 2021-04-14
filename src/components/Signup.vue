@@ -1,7 +1,8 @@
 <template>
   <v-dialog class="formdesign" width="500" v-model="dialogSignUp">
     <template v-slot:activator="{ on }">
-      <v-btn large class="homebutton text--black font-weight-bold" plain v-on="on">Înscrie-te</v-btn>
+      <v-btn v-if="userIsAuthenticated" disabled large class="homebutton text--black font-weight-bold" plain v-on="on">Înscrie-te</v-btn>
+      <v-btn v-else large class="homebutton text--black font-weight-bold" plain v-on="on">Înscrie-te</v-btn>
     </template>
     <v-card >
       <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -129,6 +130,9 @@ export default {
     },
     user () {
       return this.$store.getters.user
+    },
+    userIsAuthenticated () {
+      return this.$store.getters.user !== null && this.$store.getters.user !== undefined
     }
   },
   watch: {
@@ -142,7 +146,7 @@ export default {
   methods: {
     submitForm () {
       this.loading = true;
-      this.$store.dispatch('signUserUp', {email: this.email, password: this.password})
+      this.$store.dispatch('signUserUp', {email: this.email, password: this.password, username:this.name})
     },
     googleSignUp () {
       var provider = new firebase.auth.GoogleAuthProvider();

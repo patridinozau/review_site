@@ -2,46 +2,56 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import firebase from "firebase/app";
 import 'firebase/auth'
+import 'firebase/database'
+import 'firebase/firestore'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    user: null,
+    newUser: null,
+    userInfo: null
   },
   mutations: {
-    setUser (state, payload) {
-      state.user = payload
+    newUser (state, payload) {
+      state.newUser = payload
+    },
+    userInfo (state, payload) {
+      state.userInfo = payload
     }
   },
   actions: {
     signUserUp ({commit}, payload) {
-      firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password).then(user => {
-        const newUser = {
-          uid: user.uid,
-          username: user.name
-        }
-        commit('setUser', newUser)
+      const newUser = {
+        userName: payload.username
+      }
+      firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password).then((cred) => {
+        firebase.firestore().collection('users').doc(cred.user.uid).set(newUser).then((data) => {
+          commit('newUser', newUser)
+        }).catch(err => {
+          console.log(err)
+        })
+
       }).catch(err => {
         console.log(err)
       })
     },
     logUserIn ({commit}, payload) {
       firebase.auth().signInWithEmailAndPassword(payload.email, payload.password).then(user => {
-        const newUser = {
-          uid: user.uid,
+        const userInfo = {
+          email: user.email,
         }
-        commit('setUser', newUser)
+        commit('userInfo', userInfo)
       }).catch(err => {
         console.log(err)
       })
     },
     logUserInWithGoogle ({commit}, payload) {
       firebase.auth().signInWithPopup(payload).then(user => {
-        const newUser = {
+        const userInfo = {
           uid: user.uid,
         }
-        commit('setUser', newUser)
+        commit('userInfo', userInfo)
       }).catch(err => {
         console.log(err)
       })
@@ -49,40 +59,60 @@ export default new Vuex.Store({
     },
     logUserInWithFacebook ({commit}, payload) {
       firebase.auth().signInWithPopup(payload).then(user => {
-        const newUser = {
+        const userInfo = {
           uid: user.uid,
         }
-        commit('setUser', newUser)
+        commit('userInfo', userInfo)
       }).catch(err => {
         console.log(err)
       })
     },
     signUserUpWithGoogle ({commit}, payload) {
-      firebase.auth().signInWithPopup(payload).then(user => {
+      firebase.auth().signInWithPopup(payload).then(cred => {
         const newUser = {
-          uid: user.uid,
-          username: user.additionalUserInfo.profile.name
+          userName: cred.additionalUserInfo.profile.name
         }
-        commit('setUser', newUser)
+        firebase.firestore().collection('users').doc(cred.user.uid).set(newUser).then((data) => {
+          commit('newUser', newUser)
+        }).catch(err => {
+          console.log(err)
+        })
       }).then(err => {
         console.log(err)
       })
     },
     signUserUpWithFacebook ({commit}, payload) {
-      firebase.auth().signInWithPopup(payload).then(user => {
+      firebase.auth().signInWithPopup(payload).then(cred => {
         const newUser = {
-          uid: user.uid,
-          username: user.additionalUserInfo.profile.name
+          userName: cred.additionalUserInfo.profile.name
         }
-        commit('setUser', newUser)
+        firebase.firestore().collection('users').doc(cred.user.uid).set(newUser).then((data) => {
+          commit('newUser', newUser)
+        }).catch(err => {
+          console.log(err)
+        })
       }).then(err => {
         console.log(err)
       })
+    },
+    autoSignIn ({commit}, payload) {
+      firebase.firestore().collection('users').doc(payload.uid).onSnapshot((doc) => {
+        if (doc.exists) {
+          commit('userInfo', {
+            userName: doc.data().userName,
+            email: payload.email,
+          })
+        } else console.log("Nu exista")
+      })
+    },
+    logout ({commit}) {
+      firebase.auth().signOut()
+      commit('userInfo', null)
     }
   },
   getters: {
     user (state) {
-      return state.user
+      return state.userInfo
     }
   },
   modules: {

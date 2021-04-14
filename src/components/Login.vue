@@ -2,7 +2,8 @@
 
   <v-dialog class="basePage" width="500" v-model="dialogLogIn">
     <template v-slot:activator="{ on }">
-      <v-btn large class="homebutton text--black font-weight-bold" plain v-on="on">Autentifică-te</v-btn>
+      <v-btn v-if="userIsAuthenticated" disabled large class="homebutton text--black font-weight-bold" plain v-on="on">Autentifică-te</v-btn>
+      <v-btn v-else large class="homebutton text--black font-weight-bold" plain v-on="on">Autentifică-te</v-btn>
     </template>
     <v-card>
       <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -109,6 +110,9 @@ export default {
     },
     user () {
       return this.$store.getters.user
+    },
+    userIsAuthenticated () {
+      return this.$store.getters.user !== null && this.$store.getters.user !== undefined
     }
   },
   watch: {

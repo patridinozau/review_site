@@ -14,8 +14,8 @@
               <p>Text extra pt ceva?</p>
             </td>
             <td>
-              <p>Email: test@provider.com</p>
-              <p>Nume: NumeProfil</p>
+              <p>E-mail: {{ user.email }}</p>
+              <p>Nume: {{ user.userName }}</p>
             </td>
           </tr>
           <tr>
@@ -44,6 +44,11 @@ import Navbar from "../components/Navbar";
   export default {
   components: {
     'nav-bar': Navbar
+  },
+  computed: {
+    user () {
+      return this.$store.getters.user
+    }
   }
 }
 </script>

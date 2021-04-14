@@ -1,5 +1,33 @@
 <template>
-  <div class="navbar white--text">
+  <div class="navbar white--text" v-if="userIsAuthenticated">
+      <span><img src="../assets/logoo.png" class="logo"></span>
+      <div class="navcontent1">
+        <router-link to="/" style="text-decoration: none" class="white--text font">ACASĂ</router-link>
+        <v-btn class="buttons font white--text" text>CATEGORII</v-btn>
+        <router-link to="/despreNoi" style="text-decoration: none" class="white--text font">DESPRE NOI</router-link>
+      </div>
+
+    <div class="text-center">
+      <v-menu offset-y>
+        <template v-slot:activator="{ on }">
+          <v-avatar v-on="on">
+            <v-icon dark>
+              mdi-account-circle
+            </v-icon>
+          </v-avatar>
+        </template>
+
+        <v-btn to="/user">
+          Profile
+        </v-btn>
+        <br />
+        <v-btn @click="logout">
+          Logout
+        </v-btn>
+      </v-menu>
+    </div>
+  </div>
+  <div v-else class="navbar white--text">
     <span><img src="../assets/logoo.png" class="logo"></span>
     <div class="navcontent">
       <router-link to="/" style="text-decoration: none" class="white--text font">ACASĂ</router-link>
@@ -14,8 +42,19 @@
 
 export default {
   name: 'nav-bar',
-  components:{}
+  data: () => ({
 
+  }),
+  computed: {
+    userIsAuthenticated () {
+      return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+    }
+  },
+  methods: {
+    logout () {
+      this.$store.dispatch('logout')
+    }
+  }
 }
 </script>
 
@@ -45,6 +84,14 @@ export default {
     display: flex;
     position: relative;
     right: 40%;
+  }
+  .navcontent1 {
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+    justify-content: center;
+    display: flex;
+    position: relative;
   }
   .logo {
     padding: 0;

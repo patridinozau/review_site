@@ -5,6 +5,7 @@ import store from './store'
 import vuetify from './plugins/vuetify';
 import Vuelidate from 'vuelidate'
 import firebase from "firebase/app";
+import 'firebase/auth'
 
 Vue.use(Vuelidate)
 
@@ -13,6 +14,7 @@ Vue.config.productionTip = false
 var firebaseConfig = {
   apiKey: "AIzaSyAKH6HfHOXWv70iRwdUC9GBUxpbofjCdUA",
   authDomain: "itec-8b9cf.firebaseapp.com",
+  databaseURL: "https://itec-8b9cf-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "itec-8b9cf",
   storageBucket: "itec-8b9cf.appspot.com",
   messagingSenderId: "858959018814",
@@ -27,5 +29,12 @@ new Vue({
   router,
   store,
   vuetify,
-  render: h => h(App)
+  render: h => h(App),
+  created () {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.$store.dispatch('autoSignIn', user)
+      }
+    })
+  }
 }).$mount('#app')
