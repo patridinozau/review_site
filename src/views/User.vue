@@ -10,7 +10,7 @@
         <table>
           <tr>
             <td>
-              <img src="https://i0.wp.com/365webresources.com/wp-content/uploads/2016/09/FREE-PROFILE-AVATARS.png?resize=502%2C494&ssl=1" width="300" height="300" class="profilePic">
+              <img :src="user.profileImg" width="300" height="300" class="profilePic">
               <p>Text extra pt ceva?</p>
             </td>
             <td>

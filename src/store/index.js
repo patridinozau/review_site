@@ -24,7 +24,8 @@ export default new Vuex.Store({
   actions: {
     signUserUp ({commit}, payload) {
       const newUser = {
-        userName: payload.username
+        userName: payload.username,
+        profileImg: "https://firebasestorage.googleapis.com/v0/b/itec-8b9cf.appspot.com/o/FREE-PROFILE-AVATARS.png?alt=media&token=a6b17192-ac3a-44ca-928f-08856f438d15"
       }
       firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password).then((cred) => {
         firebase.firestore().collection('users').doc(cred.user.uid).set(newUser).then((data) => {
@@ -71,7 +72,8 @@ export default new Vuex.Store({
     signUserUpWithGoogle ({commit}, payload) {
       firebase.auth().signInWithPopup(payload).then(cred => {
         const newUser = {
-          userName: cred.additionalUserInfo.profile.name
+          userName: cred.additionalUserInfo.profile.name,
+          profileImg: cred.additionalUserInfo.profile.picture
         }
         firebase.firestore().collection('users').doc(cred.user.uid).set(newUser).then((data) => {
           commit('newUser', newUser)
@@ -85,8 +87,10 @@ export default new Vuex.Store({
     signUserUpWithFacebook ({commit}, payload) {
       firebase.auth().signInWithPopup(payload).then(cred => {
         const newUser = {
-          userName: cred.additionalUserInfo.profile.name
+          userName: cred.additionalUserInfo.profile.name,
+          profileImg: cred.additionalUserInfo.profile.picture.data.url
         }
+        console.log(cred)
         firebase.firestore().collection('users').doc(cred.user.uid).set(newUser).then((data) => {
           commit('newUser', newUser)
         }).catch(err => {
@@ -102,6 +106,7 @@ export default new Vuex.Store({
           commit('userInfo', {
             userName: doc.data().userName,
             email: payload.email,
+            profileImg: doc.data().profileImg
           })
         } else console.log("Nu exista")
       })
