@@ -4,6 +4,7 @@ import firebase from "firebase/app";
 import 'firebase/auth'
 import 'firebase/database'
 import 'firebase/firestore'
+import router from "../router";
 
 Vue.use(Vuex)
 
@@ -107,6 +108,7 @@ export default new Vuex.Store({
     },
     logout ({commit}) {
       firebase.auth().signOut()
+      router.push('/')
       commit('userInfo', null)
     }
   },

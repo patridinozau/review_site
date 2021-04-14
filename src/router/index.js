@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import DespreNoi from '../views/DespreNoi.vue'
 import User from '../views/User.vue'
-// import AuthGuard from './auth-guard'
+import store from "../store";
 
 Vue.use(VueRouter)
 
@@ -22,7 +22,13 @@ const routes = [
     path: '/user',
     name: 'User',
     component: User,
-    // beforeEnter: AuthGuard()
+    beforeEnter: (to, from, next) => {
+      if (store.getters.user) {
+        next()
+      } else {
+        next('/')
+      }
+    }
   }
 
 ]
