@@ -49,8 +49,6 @@ export default new Vuex.Store({
           console.log(err)
         })
 
-
-
       }).catch(err => {
         console.log(err)
       })
@@ -79,31 +77,54 @@ export default new Vuex.Store({
     },
     signUserUpWithGoogle ({commit}, payload) {
       firebase.auth().signInWithPopup(payload).then(cred => {
+        const id = cred.user.uid
+
         const newUser = {
           userName: cred.additionalUserInfo.profile.name,
           profileImg: cred.additionalUserInfo.profile.picture
         }
-        firebase.firestore().collection('users').doc(cred.user.uid).set(newUser).then((data) => {
-          commit('newUser', newUser)
+        firebase.database().ref('users').push(newUser).then((data) => {
+          const newUserWithId = {
+            userName: cred.additionalUserInfo.profile.name,
+            profileImg: cred.additionalUserInfo.profile.picture,
+            key: data.key
+          }
+          firebase.firestore().collection('users').doc(id).set(newUserWithId).then((data) => {
+            commit('newUser', newUserWithId)
+          }).catch(err => {
+            console.log(err)
+          })
         }).catch(err => {
           console.log(err)
         })
+
       }).then(err => {
         console.log(err)
       })
     },
     signUserUpWithFacebook ({commit}, payload) {
       firebase.auth().signInWithPopup(payload).then(cred => {
+        const id = cred.user.uid
+
         const newUser = {
           userName: cred.additionalUserInfo.profile.name,
           profileImg: cred.additionalUserInfo.profile.picture.data.url
         }
-        console.log(cred)
-        firebase.firestore().collection('users').doc(cred.user.uid).set(newUser).then((data) => {
-          commit('newUser', newUser)
+        firebase.database().ref('users').push(newUser).then((data) => {
+          const newUserWithId = {
+            userName: cred.additionalUserInfo.profile.name,
+            profileImg: cred.additionalUserInfo.profile.picture.data.url,
+            key: data.key
+          }
+          firebase.firestore().collection('users').doc(id).set(newUserWithId).then((data) => {
+            commit('newUser', newUserWithId)
+          }).catch(err => {
+            console.log(err)
+          })
         }).catch(err => {
           console.log(err)
         })
+
       }).then(err => {
         console.log(err)
       })
