@@ -14,7 +14,7 @@
               <p>Text extra pt ceva?</p>
             </td>
             <td>
-              <p>E-mail: {{ user.email }}</p>
+              <p v-if="authUser">E-mail: {{ authUser.email }}</p>
               <p>Nume: {{ user.userName }}</p>
             </td>
           </tr>
@@ -42,12 +42,17 @@
 import Navbar from "../components/Navbar";
 
   export default {
-  components: {
+  props: ['id'],
+    components: {
     'nav-bar': Navbar
   },
   computed: {
     user () {
-      return this.$store.getters.user
+      return this.$store.getters.someUser(this.id)
+    },
+    authUser () {
+      if(this.$store.getters.user !== null && this.$store.getters.user !== undefined)
+        return this.$store.getters.user
     }
   }
 }

@@ -146,6 +146,13 @@ export default new Vuex.Store({
   getters: {
     user (state) {
       return state.userInfo
+    },
+    someUser (state) {
+      return (userId) => {
+        return state.users.find((theUser) => {
+          return theUser.id === userId
+        })
+      }
     }
   },
   modules: {
