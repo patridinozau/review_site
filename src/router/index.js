@@ -20,8 +20,9 @@ const routes = [
     component: DespreNoi
   },
   {
-    path: '/user',
+    path: '/user/:id',
     name: 'User',
+    props: true,
     component: User,
     beforeEnter: (to, from, next) => {
       if (store.getters.user) {

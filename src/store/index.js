@@ -11,7 +11,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     newUser: null,
-    userInfo: null
+    userInfo: null,
+    users: null
   },
   mutations: {
     newUser (state, payload) {
@@ -19,20 +20,36 @@ export default new Vuex.Store({
     },
     userInfo (state, payload) {
       state.userInfo = payload
+    },
+    setAllUsers (state, payload) {
+      state.users = payload
     }
   },
   actions: {
     signUserUp ({commit}, payload) {
       const newUser = {
         userName: payload.username,
-        profileImg: "https://firebasestorage.googleapis.com/v0/b/itec-8b9cf.appspot.com/o/FREE-PROFILE-AVATARS.png?alt=media&token=a6b17192-ac3a-44ca-928f-08856f438d15"
+        profileImg: "https://firebasestorage.googleapis.com/v0/b/itec-8b9cf.appspot.com/o/FREE-PROFILE-AVATARS.png?alt=media&token=a6b17192-ac3a-44ca-928f-08856f438d15",
       }
       firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password).then((cred) => {
-        firebase.firestore().collection('users').doc(cred.user.uid).set(newUser).then((data) => {
-          commit('newUser', newUser)
+        const id = cred.user.uid
+
+        firebase.database().ref('users').push(newUser).then((data) => {
+          const newUserWithId = {
+            userName: payload.username,
+            profileImg: "https://firebasestorage.googleapis.com/v0/b/itec-8b9cf.appspot.com/o/FREE-PROFILE-AVATARS.png?alt=media&token=a6b17192-ac3a-44ca-928f-08856f438d15",
+            key: data.key
+          }
+          firebase.firestore().collection('users').doc(id).set(newUserWithId).then((data) => {
+            commit('newUser', newUserWithId)
+          }).catch(err => {
+            console.log(err)
+          })
         }).catch(err => {
           console.log(err)
         })
+
+
 
       }).catch(err => {
         console.log(err)
@@ -94,11 +111,13 @@ export default new Vuex.Store({
     autoSignIn ({commit}, payload) {
       firebase.firestore().collection('users').doc(payload.uid).onSnapshot((doc) => {
         if (doc.exists) {
-          commit('userInfo', {
+          const userInfo = {
             userName: doc.data().userName,
             email: payload.email,
-            profileImg: doc.data().profileImg
-          })
+            profileImg: doc.data().profileImg,
+            key: doc.data().key
+          }
+          commit('userInfo', userInfo)
         } else console.log("Nu exista")
       })
     },
@@ -106,6 +125,22 @@ export default new Vuex.Store({
       firebase.auth().signOut()
       router.push('/')
       commit('userInfo', null)
+    },
+    loadUsers ({commit}) {
+      firebase.database().ref('users').once('value').then((data) => {
+        const users = []
+        const obj = data.val()
+        for(let key in obj) {
+          users.push({
+            id: key,
+            userName: obj[key].userName,
+            profileImg: obj[key].profileImg
+          })
+        }
+        commit('setAllUsers', users)
+      }).catch(err => {
+            console.log(err)
+          })
     }
   },
   getters: {

@@ -1,29 +1,47 @@
 <template>
   <div class="navbar white--text" v-if="userIsAuthenticated">
-      <span><img src="../assets/logoo.png" class="logo"></span>
-      <div class="navcontent1">
-        <router-link to="/" style="text-decoration: none" class="white--text font">ACASĂ</router-link>
-        <router-link to="/categorii" style="text-decoration: none; padding:5px" class="white--text font">CATEGORII </router-link>
-        <router-link to="/despreNoi" style="text-decoration: none" class="white--text font">DESPRE NOI</router-link>
-      </div>
+    <span><img src="../assets/logoo.png" class="logo"></span>
+    <div class="navcontent1">
+      <router-link to="/" style="text-decoration: none" class="white--text font">ACASĂ</router-link>
+      <router-link to="/categorii" style="text-decoration: none; padding:5px" class="white--text font">CATEGORII </router-link>
+      <router-link to="/despreNoi" style="text-decoration: none" class="white--text font">DESPRE NOI</router-link>
+    </div>
 
     <div class="text-center">
       <v-menu offset-y>
         <template v-slot:activator="{ on }">
           <v-avatar v-on="on">
-            <v-icon dark>
+            <v-icon dark class="avatarr">
               mdi-account-circle
             </v-icon>
           </v-avatar>
         </template>
+        <v-list class="list">
+          <v-list-item-group>
+            <v-list-item @click="goToMyAcc" class="haha">
+              <v-list-item-icon>
+                <v-icon class="ava">
+                  mdi-account-circle
+                </v-icon>
+              </v-list-item-icon>
 
-        <v-btn to="/user">
-          Profile
-        </v-btn>
-        <br />
-        <v-btn @click="logout">
-          Logout
-        </v-btn>
+              <v-list-item-content>
+                <v-list-item-title class="texli">Profil</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+            <v-list-item @click="logout" class="haha">
+              <v-list-item-icon>
+                <v-icon class="ava">
+                  mdi-logout
+                </v-icon>
+              </v-list-item-icon>
+
+              <v-list-item-content>
+                <v-list-item-title class="texli">Logout</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list-item-group>
+        </v-list>
       </v-menu>
     </div>
   </div>
@@ -40,22 +58,25 @@
 <script>
 
 
-export default {
-  name: 'nav-bar',
-  data: () => ({
-
-  }),
-  computed: {
-    userIsAuthenticated () {
-      return this.$store.getters.user !== null && this.$store.getters.user !== undefined
-    }
-  },
-  methods: {
-    logout () {
-      this.$store.dispatch('logout')
+  export default {
+    name: 'nav-bar',
+    data: () => ({
+    }),
+    computed: {
+      userIsAuthenticated () {
+        return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+      }
+    },
+    methods: {
+      logout () {
+        this.$store.dispatch('logout')
+      },
+      goToMyAcc () {
+        const id = this.$store.getters.user.key
+        this.$router.push('/user/' + id)
+      }
     }
   }
-}
 </script>
 
 <style scoped>
@@ -98,5 +119,19 @@ export default {
     margin: 0;
     height:55%;
     width: 55%;
+  }
+  .avatarr{
+    cursor: pointer;
+    color: lightgrey;
+    font-size:40px;
+  }
+  .list{
+    width:230px;
+  }
+  .ava{
+    font-size:30px;
+  }
+  .haha:hover{
+    background-color: #e3e3fd;
   }
 </style>
