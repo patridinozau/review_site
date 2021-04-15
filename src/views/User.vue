@@ -7,7 +7,13 @@
       <br><br><br><br>
       <div class="profileCard" >
         <v-divider vertical dark inset/>
-        <table>
+        <v-progress-circular
+                :size="50"
+                color="primary"
+                indeterminate
+                v-if="loading"
+        ></v-progress-circular>
+        <table v-if="!loading">
           <tr>
             <td>
               <img :src="user.profileImg" width="300" height="300" class="profilePic">
@@ -72,6 +78,9 @@ import Navbar from "../components/Navbar";
     authUser () {
       if(this.$store.getters.user.key === this.$store.getters.someUser(this.id).id)
         return this.$store.getters.user
+    },
+    loading () {
+      return this.$store.getters.loading
     }
   }
 }

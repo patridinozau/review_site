@@ -12,7 +12,8 @@ export default new Vuex.Store({
   state: {
     newUser: null,
     userInfo: null,
-    users: null
+    users: null,
+    userPageLoading: false
   },
   mutations: {
     newUser (state, payload) {
@@ -23,6 +24,9 @@ export default new Vuex.Store({
     },
     setAllUsers (state, payload) {
       state.users = payload
+    },
+    setLoading (state, payload) {
+      state.userPageLoading = payload
     }
   },
   actions: {
@@ -148,6 +152,7 @@ export default new Vuex.Store({
       commit('userInfo', null)
     },
     loadUsers ({commit}) {
+      commit('setLoading', true)
       firebase.database().ref('users').once('value').then((data) => {
         const users = []
         const obj = data.val()
@@ -159,8 +164,10 @@ export default new Vuex.Store({
           })
         }
         commit('setAllUsers', users)
+        commit('setLoading', false)
       }).catch(err => {
             console.log(err)
+            commit('setLoading', false)
           })
     }
   },
@@ -174,6 +181,9 @@ export default new Vuex.Store({
           return theUser.id === userId
         })
       }
+    },
+    loading (state) {
+      return state.userPageLoading
     }
   },
   modules: {
