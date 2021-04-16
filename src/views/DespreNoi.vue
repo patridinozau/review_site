@@ -167,7 +167,7 @@
   }
   .grad {
     background: rgb(255,255,255);
-    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,231,1) 23%, rgba(195,205,197,1) 100%);
+    background: linear-gradient(180deg, rgba(0, 204, 255, 0.07) 0%, rgba(0, 204, 255, 0.14) 23%, rgba(0, 204, 255, 0.24) 100%);
     /*background: rgb(255,255,255);*/
     /*background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,231,1) 25%, rgba(195,205,197,1) 50%, rgba(255,255,231,1) 75%, rgba(255,255,255,1) 100%);*/
   }

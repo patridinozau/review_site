@@ -13,7 +13,8 @@ export default new Vuex.Store({
     newUser: null,
     userInfo: null,
     users: null,
-    userPageLoading: false
+    userPageLoading: false,
+    categorii: null
   },
   mutations: {
     newUser (state, payload) {
@@ -27,6 +28,9 @@ export default new Vuex.Store({
     },
     setLoading (state, payload) {
       state.userPageLoading = payload
+    },
+    setCategorii (state, payload) {
+      state.categorii = payload
     }
   },
   actions: {
@@ -169,6 +173,26 @@ export default new Vuex.Store({
             console.log(err)
             commit('setLoading', false)
           })
+    },
+    loadCategorii ({commit}) {
+      commit('setLoading', true)
+      firebase.database().ref('categorii').once('value').then((data) => {
+        const categorii = []
+        const obj = data.val()
+        for(let key in obj) {
+          categorii.push({
+            id: key,
+            numeCategorie: obj[key].numeCategorie,
+            img: obj[key].img,
+            description: obj[key].description
+          })
+          commit('setCategorii', categorii)
+          commit('setLoading', false)
+        }
+      }).catch(err => {
+        commit('setLoading', false)
+        console.log(err)
+      })
     }
   },
   getters: {
@@ -184,6 +208,9 @@ export default new Vuex.Store({
     },
     loading (state) {
       return state.userPageLoading
+    },
+    categorii (state) {
+      return state.categorii
     }
   },
   modules: {

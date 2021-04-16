@@ -170,10 +170,7 @@ export default {
 <style scoped>
 
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap');
-.basePage {
-  justify-content: center;
-  font-family: 'Lato', sans-serif;
-}
+
 .formdesign {
   align: center;
   text-align: center;
