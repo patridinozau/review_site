@@ -6,6 +6,7 @@ import vuetify from './plugins/vuetify';
 import Vuelidate from 'vuelidate'
 import firebase from "firebase/app";
 import 'firebase/auth'
+import 'firebase/database'
 
 Vue.use(Vuelidate)
 
@@ -36,5 +37,8 @@ new Vue({
         this.$store.dispatch('autoSignIn', user)
       }
     })
+    this.$store.dispatch('loadUsers')
+    this.$store.dispatch('loadCategorii')
+
   }
 }).$mount('#app')

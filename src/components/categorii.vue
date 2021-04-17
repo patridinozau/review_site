@@ -8,15 +8,21 @@
         <br />
         <br />
         <div>
-            <v-container>
+            <v-progress-circular
+                    :size="50"
+                    color="primary"
+                    indeterminate
+                    v-if="loading"
+            ></v-progress-circular>
+            <v-container v-if="!loading">
                 <v-row>
                     <v-col>
-                        <v-card class="cat" v-for="categorie in categorii" :key="categorie.name">
-                            <img class="imagini" :src="categorie.image" alt="alt text" />
+                        <v-card class="cat" v-for="categorie in categorii" :key="categorie.id">
+                            <img class="imagini" :src="categorie.img" alt="alt text" />
                             <div class="center"><h4 class="text1">{{categorie.description}}</h4></div>
                             <v-card-text>
                                 <div>
-                                    <h3 class="text">{{categorie.name}}</h3>
+                                    <h3 class="text">{{categorie.numeCategorie}}</h3>
                                 </div>
                             </v-card-text>
                         </v-card>
@@ -35,17 +41,15 @@
         },
         data () {
             return {
-                categorii:[
-                    { name: 'Electrocasnice',description:'Electrocasnicele sunt aparate care funcționează cu energie electrică și se folosesc pentru ușurarea muncilor casnice.', image: require('../assets/electrocasnice.jpg') },
-                    { name: 'Restaurante, baruri si terase',description:'Un restaurant este un stabiliment, local public unde se pot consuma pe loc mâncăruri și băuturi, contra cost.', image: require('../assets/restaurant2.jpg') },
-                    { name: 'Masini, scootere, biciclete',description:'Automobilul sau mai familiar mașina, este un vehicul cu patru (rar, trei, șase) roți, acționat de un motor cu ardere internă.', image: require('../assets/car.jpg') },
-                    { name: 'Mancare', description:'Mâncarea sau hrana reprezintă orice substanță, de obicei compusă din carbohidrați, grăsimi și proteine.',image: require('../assets/mancare.jpg') },
-                    { name: 'Produse de igiena si makeup',description:'Cosmetica este arta și practica îngrijirii, păstrării și înfrumusețării corpului uman, în special a feței și a părului.', image: require('../assets/makeup.jpg') },
-                    { name: 'Haine si incaltaminte',description:'Vestimentație este termenul care se referă la totalitatea articolelor de îmbrăcăminte, încălțăminte, accesorii și bijuterii.', image: require('../assets/haine2.jpg') },
-                    { name: 'Servicii ale unei companii',description:'Sunt firme care presteaza anumite servicii in schimbul banilor.', image: require('../assets/servicii.jpg') },
-                    { name: 'Filme si seriale',description:'Film este termenul utilizat pentru desemnarea, în accepțiune mai largă, a produsului final al artei și industriei cinematografice.', image: require('../assets/film.jpg') },
-                    { name: 'Aplicatii si site-uri',description:'Aplicația software (app pe scurt) este un program sau un grup de programe concepute pentru utilizatorii finali. ', image: require('../assets/aplicatii.jpg') }
-                ]
+
+            }
+        },
+        computed: {
+            categorii () {
+                return this.$store.getters.categorii
+            },
+            loading () {
+                return this.$store.getters.loading
             }
         }
     }

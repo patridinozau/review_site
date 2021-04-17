@@ -100,7 +100,7 @@ export default {
   font-family: 'Lato', sans-serif;
 }
 .first_content{
-  background-image: linear-gradient(to bottom right,rgba(245, 250, 228,0.4),rgba(245, 250, 228,0.4)),
+  background-image: linear-gradient(to bottom right,rgba(0, 204, 255, 0.07),rgba(0, 204, 255, 0.24)),
   url("../assets/tori-1976609_1920.jpg");
   background-position: center;
   background-size: cover;
