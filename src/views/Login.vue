@@ -63,7 +63,7 @@
         <hr class="text"/>
         <div class="text">
           <span>Încă nu ți-ai creat un cont?</span>
-          <v-btn text class="ml-3" float="right">Înscrie-te</v-btn>
+          <v-btn text class="ml-3" float="right" @click="toSignUp">Înscrie-te</v-btn>
         </div>
       </form>
       </v-section>
@@ -148,6 +148,9 @@ export default {
       this.password = ''
       this.loading = false
     },
+    toSignUp () {
+      this.$router.push('/Signup')
+    }
   },
 }
 </script>

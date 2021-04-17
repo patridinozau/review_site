@@ -73,7 +73,7 @@
         <hr class="text"/>
         <div class="text">
           <span>Ai deja un cont?</span>
-          <v-btn class="ml-3" text float="right">Autentifică-te</v-btn>
+          <v-btn class="ml-3" text float="right" @click="toLogIn">Autentifică-te</v-btn>
         </div>
       </form>
 
@@ -170,6 +170,9 @@ export default {
       this.password = ''
       this.loading = false
     },
+    toLogIn () {
+      this.$router.push('/Login')
+    }
   },
 }
 </script>
