@@ -72,7 +72,7 @@
             <v-icon class="icon">mdi-magnify</v-icon>
           </td>
           <td>
-            <input v-model="search" type="text" class="font font-weight-bold" placeholder="Type to search..."  />
+            <input v-model="search" type="text" class="font" placeholder="Type to search..."  />
           </td>
           <td>
             <v-icon class="icon mr-4" style="">mdi-close</v-icon>
