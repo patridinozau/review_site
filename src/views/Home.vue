@@ -10,7 +10,8 @@
         <div class="content-col content-text">
           <p>Doresti si tu sa lasi un review unui produs? Creeaza-ti un cont chiar acum</p>
           <br />
-          <sign-up />
+          <v-btn v-if="userIsAuthenticated" disabled large class="homebutton text--black font-weight-bold" plain >Înscrie-te</v-btn>
+          <v-btn v-else large class="homebutton text--black font-weight-bold" plain @click="toSignUp" >Înscrie-te</v-btn>
         </div>
         <div class="content-col mr-15">
           <img src="../assets/rating.png" class="img" />
@@ -19,8 +20,10 @@
       <div class="subcontent">
         <div class="content-col subcontent-text">
           <p>Ai deja un cont? Conecteaza-te la el aici</p>
+
           <br />
-          <log-in />
+          <v-btn v-if="userIsAuthenticated" disabled large class="homebutton text--black font-weight-bold" plain >Autentifică-te</v-btn>
+          <v-btn v-else large class="homebutton text--black font-weight-bold" plain @click="toLogIn" >Autentifică-te</v-btn>
         </div>
       </div>
     </div>
@@ -83,14 +86,22 @@
 </template>
 
 <script>
-import Signup from "../components/Signup";
-import Login from "../components/Login";
+import Signup from "./Signup";
+import Login from "./Login";
 import Navbar from "../components/Navbar";
 export default {
   components: {
     'sign-up': Signup,
     'log-in': Login,
     'nav-bar': Navbar
+  },
+  methods: {
+    toSignUp () {
+      this.$router.push('/Signup')
+    },
+    toLogIn () {
+      this.$router.push('/Login')
+    }
   }
 }
 </script>

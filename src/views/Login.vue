@@ -1,17 +1,14 @@
 <template>
+<div>
+  <NavBar />
+  <v-main class="basePage" width="500">
 
-  <v-dialog class="basePage" width="500" v-model="dialogLogIn">
-    <template v-slot:activator="{ on }">
-      <v-btn v-if="userIsAuthenticated" disabled large class="homebutton text--black font-weight-bold" plain v-on="on">Autentifică-te</v-btn>
-      <v-btn v-else large class="homebutton text--black font-weight-bold" plain v-on="on">Autentifică-te</v-btn>
-    </template>
     <v-card>
       <link rel="preconnect" href="https://fonts.gstatic.com">
       <link rel="preconnect" href="https://fonts.gstatic.com">
       <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 
       <form class="formdesign" @submit.prevent="submitLogIn">
-        <div @click="dialogLogIn = false"><v-icon class="close">mdi-close</v-icon></div>
         <h1>Autentifică-te!</h1>
         <br />
         <hr />
@@ -71,7 +68,8 @@
         </div>
       </form>
     </v-card>
-  </v-dialog>
+  </v-main>
+</div>
 </template>
 
 <script>
@@ -80,8 +78,12 @@ import { required, email, minLength } from 'vuelidate/lib/validators'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
+import Navbar from "../components/Navbar";
+import NavBar from "@/components/Navbar";
+
 export default {
   name: "login",
+  components: {NavBar},
   mixins: [validationMixin],
   validations: {
     email: { required, email },
@@ -231,5 +233,4 @@ export default {
   cursor:pointer;
   background-color: #e3e3fd;
 }
-
 </style>

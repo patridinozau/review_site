@@ -6,6 +6,8 @@ import User from '../views/User.vue'
 import store from "../store";
 import categorii from "../components/categorii";
 import categorie from "../views/categorie";
+import Login from '../views/Login.vue'
+import Signup from '../views/Signup.vue'
 
 Vue.use(VueRouter)
 
@@ -19,6 +21,16 @@ const routes = [
     path: '/despreNoi',
     name: 'DespreNoi',
     component: DespreNoi
+  },
+  {
+    path: '/Login',
+    name: 'Login',
+    component: Login
+  },
+  {
+    path: '/Signup',
+    name: 'Signup',
+    component: Signup
   },
   {
     path: '/user/:id',
