@@ -86,6 +86,8 @@
       <router-link to="/" style="text-decoration: none; padding:15px" class="white--text font">ACASA</router-link>
       <router-link to="/categorii" style="text-decoration: none; padding:15px" class="white--text font">CATEGORII </router-link>
       <router-link to="/despreNoi" style="text-decoration: none; padding:15px" class="white--text font">DESPRE NOI</router-link>
+      <router-link to="/Login" style="text-decoration: none; padding:15px" class="white--text font">AUTENTIFICA-TE</router-link>
+      <router-link to="/Signup" style="text-decoration: none; padding:15px" class="white--text font">INSCRIE-TE</router-link>
     </div>
   </div>
 </template>
@@ -110,6 +112,12 @@
       goToMyAcc () {
         const id = this.$store.getters.user.key
         this.$router.push('/user/' + id)
+      },
+      toSignUp () {
+        this.$router.push('/Signup')
+      },
+      toLogIn () {
+        this.$router.push('/Login')
       }
     }
   }

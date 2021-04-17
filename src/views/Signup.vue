@@ -2,14 +2,13 @@
   <div>
     <NavBar />
 
-  <v-main class="formdesign" width="500" >
-
-    <v-card >
+  <v-main>
+    <div class="main">
       <link rel="preconnect" href="https://fonts.gstatic.com">
       <link rel="preconnect" href="https://fonts.gstatic.com">
       <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-
-      <form class="formdesign" @submit.prevent="submitForm">
+      <v-section class="formdesign">
+      <form  @submit.prevent="submitForm">
         <h1>Înscrie-te!</h1>
         <br />
         <hr />
@@ -66,7 +65,7 @@
         </v-text-field>
         <br />
         <div align="center">
-          <v-btn class="mr-4" type="submit" :loading="loading">trimite</v-btn>
+          <v-btn class="mr-4 bttn" type="submit" :loading="loading">trimite</v-btn>
           <v-btn class="bttn" @click="clear">golește</v-btn>
         </div>
         <br />
@@ -74,11 +73,16 @@
         <hr class="text"/>
         <div class="text">
           <span>Ai deja un cont?</span>
-          <v-btn class="ml-3" text float="right"
-                 @click="dialogSignUp = false">Autentifică-te</v-btn>
+          <v-btn class="ml-3" text float="right">Autentifică-te</v-btn>
         </div>
       </form>
-    </v-card>
+
+      </v-section>
+      <div class="circle1"></div>
+      <div class="circle2"></div>
+      <div class="circle3"></div>
+      <div class="circle4"></div>
+    </div>
 
   </v-main>
   </div>
@@ -172,27 +176,39 @@ export default {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap');
+
+.main {
+  background: rgb(0,204,255);
+  background: linear-gradient(180deg, rgba(0,204,255,0.1) 0%, rgba(0,204,255,0.3) 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .formdesign {
-  align: center;
   text-align: center;
+  justify-content: center;
+  align-content: center;
   padding: 60px;
   font-family: 'Lato', sans-serif;
-  background: whitesmoke;
-  /*background: linear-gradient(*/
-  /*    to right bottom,*/
-  /*    rgba(255, 255, 255, 0.7),*/
-  /*    rgba(255, 255, 255, 0.3)*/
-  /*);*/
-  /*border-radius: 2rem;*/
-  /*z-index: 2;*/
-  /*backdrop-filter: blur(2rem);*/
+  background: white;
+  min-height: 800px;
+  width: 40%;
+  background: linear-gradient(
+      to right bottom,
+      rgba(255, 255, 255, 0.7),
+      rgba(255, 255, 255, 0.3)
+  );
+  border-radius: 2rem;
+  z-index: 2;
+  backdrop-filter: blur(2rem);
+  display: flex;
 }
 .bttn {
   margin-left: 6px;
 }
-.homebutton{
-  background-color: hsl(47, 95%, 49%);
-}
+
 .text {
   color: gray;
   font-family: 'Lato', sans-serif;
@@ -249,12 +265,46 @@ export default {
 .wrapper .button:hover .icon-google i {
   color: #fff;
 }
-.close {
-  align:right;
-  float: right;
+
+.circle1,
+.circle2,
+.circle3,
+.circle4 {
+  background: white;
+  background: linear-gradient(
+      to right bottom,
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0.3)
+  );
+  position: absolute;
+  border-radius: 50%;
 }
-.close:hover {
-  cursor:pointer;
-  background-color: #e3e3fd;
+
+.circle1 {
+  top: 7%;
+  right: 20%;
+  height: 7rem;
+  width: 7rem;
 }
+.circle2 {
+  bottom: 5%;
+  left: 20%;
+  height: 20rem;
+  width: 20rem;
+}
+
+.circle3 {
+  top: 17%;
+  right:12%;
+  height: 10rem;
+  width: 10rem;
+}
+
+.circle4{
+  top: 35%;
+  left: 8%;
+  height:11rem;
+  width:11rem;
+}
+
 </style>

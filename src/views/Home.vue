@@ -102,6 +102,11 @@ export default {
     toLogIn () {
       this.$router.push('/Login')
     }
+  },
+  computed: {
+    userIsAuthenticated () {
+      return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+    }
   }
 }
 </script>
@@ -110,8 +115,13 @@ export default {
 .main {
   font-family: 'Lato', sans-serif;
 }
+
+.homebutton{
+  background-color: hsl(47, 95%, 49%);
+}
+
 .first_content{
-  background-image: linear-gradient(to bottom right,rgba(0, 204, 255, 0.07),rgba(0, 204, 255, 0.24)),
+  background-image: linear-gradient(180deg, rgba(0,204,255,0.05) 0%, rgba(0,204,255,0.1) 100%),
   url("../assets/tori-1976609_1920.jpg");
   background-position: center;
   background-size: cover;
