@@ -44,6 +44,9 @@
 
             }
         },
+        created() {
+            this.$store.dispatch('loadCategorii')
+        },
         computed: {
             categorii () {
                 return this.$store.getters.categorii

@@ -71,7 +71,7 @@
         components: {
             'navbar': Navbar
         },
-        mounted () {
+        created () {
             this.$store.dispatch('loadProduse', this.id)
         },
         data () {
@@ -81,10 +81,10 @@
         },
         computed: {
             produse () {
-                this.$store.getters.produse
+                return this.$store.getters.produse
             },
             loading () {
-                this.$store.getters.loading
+                return this.$store.getters.loading
             }
         }
     }
