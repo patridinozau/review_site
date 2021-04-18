@@ -1,13 +1,13 @@
 <template>
   <div>
-    <NavBar />
+    <navbar />
 
   <v-main>
     <div class="main">
       <link rel="preconnect" href="https://fonts.gstatic.com">
       <link rel="preconnect" href="https://fonts.gstatic.com">
       <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-      <v-section class="formdesign">
+      <section class="formdesign">
       <form  @submit.prevent="submitForm">
         <h1>Înscrie-te!</h1>
         <br />
@@ -77,7 +77,7 @@
         </div>
       </form>
 
-      </v-section>
+      </section>
       <div class="circle1"></div>
       <div class="circle2"></div>
       <div class="circle3"></div>
@@ -94,11 +94,13 @@ import { required, maxLength, email, minLength } from 'vuelidate/lib/validators'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
-import NavBar from "@/components/Navbar";
+import Navbar from "../components/Navbar";
 
 export default {
   name: "signup",
-  components: {NavBar},
+  components: {
+    'navbar': Navbar
+  },
   mixins: [validationMixin],
   validations: {
     name: { required, maxLength: maxLength(15), minLength: minLength(3) },

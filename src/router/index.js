@@ -51,8 +51,9 @@ const routes = [
     component: categorii
   },
   {
-    path: '/categorii/categorie',
+    path: '/categorii/:id',
     name: 'categorie',
+    props: true,
     component: categorie
   }
 

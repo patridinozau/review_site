@@ -17,7 +17,7 @@
             <v-container v-if="!loading">
                 <v-row>
                     <v-col>
-                        <v-card class="cat" v-for="categorie in categorii" :key="categorie.id">
+                        <v-card class="cat" v-for="categorie in categorii" :key="categorie.id" @click="goToCat(categorie.id)">
                             <img class="imagini" :src="categorie.img" alt="alt text" />
                             <div class="center"><h4 class="text1">{{categorie.description}}</h4></div>
                             <v-card-text>
@@ -50,6 +50,11 @@
             },
             loading () {
                 return this.$store.getters.loading
+            }
+        },
+        methods: {
+            goToCat (key) {
+                this.$router.push('/categorii/' + key)
             }
         }
     }

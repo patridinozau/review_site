@@ -2,7 +2,13 @@
     <v-main style="margin:auto;width:65%">
         <navbar />
         <br><br><br><br><br>
-        <div class="d-flex flex-no-wrap">
+        <v-progress-circular
+                :size="50"
+                color="primary"
+                indeterminate
+                v-if="loading"
+        ></v-progress-circular>
+        <div class="d-flex flex-no-wrap" v-if="!loading">
             <div style="width:30%">
                 <div class="zonaFiltre">
                     <div class="Filtre" style="padding:15px">
@@ -31,8 +37,8 @@
             <v-container>
                 <v-row>
                     <v-col>
-                        <v-card class="pa-7 mb-4" v-for="produs in produse" :key="produs.name">
-                            <div><img class="imagini" :src="produs.imagine" alt="alt text" /></div>
+                        <v-card class="pa-7 mb-4" v-for="produs in produse" :key="produs.id">
+                            <div><img class="imagini" :src="produs.img" alt="alt text" /></div>
                             <div>
                                 <div class="rat" style="margin-top: 2px">
                                     ({{produs.rating}})</div>
@@ -61,17 +67,24 @@
     import Navbar from "../components/Navbar";
     export default {
         name: "categorie",
+        props: ['id'],
         components: {
             'navbar': Navbar
         },
+        mounted () {
+            this.$store.dispatch('loadProduse', this.id)
+        },
         data () {
             return {
-                produse:[
-                    { name: 'Arctic AD54240M30W',reviews:'150',rating: 2,descriere:'Un frigider compact, cu doua usi si un volum net total de 223 litri. Rafturile ajustabile ofera un grad ridicat de ﬂexibilitate in organizarea frigiderului, ﬁind ideal pentru familiile ce cauta o solutie practica si avantajoasa.', imagine:require('../assets/electrocasnice.jpg')},
-                    { name: 'Arctic AD54240M30W',reviews:'320',rating: 3.4,descriere:'Un frigider compact, cu doua usi si un volum net total de 223 litri. Rafturile ajustabile ofera un grad ridicat de ﬂexibilitate in organizarea frigiderului, ﬁind ideal pentru familiile ce cauta o solutie practica si avantajoasa.', imagine:require('../assets/electrocasnice.jpg')},
-
-                ],
                 checkbox: false
+            }
+        },
+        computed: {
+            produse () {
+                this.$store.getters.produse
+            },
+            loading () {
+                this.$store.getters.loading
             }
         }
     }

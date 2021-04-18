@@ -1,13 +1,13 @@
 <template>
 <div>
-  <NavBar />
+  <navbar />
   <v-main>
 
     <div class="main">
       <link rel="preconnect" href="https://fonts.gstatic.com">
       <link rel="preconnect" href="https://fonts.gstatic.com">
       <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-      <v-section class="formdesign">
+      <section class="formdesign">
       <form @submit.prevent="submitLogIn">
         <h1>Autentifică-te!</h1>
         <br />
@@ -66,7 +66,7 @@
           <v-btn text class="ml-3" float="right" @click="toSignUp">Înscrie-te</v-btn>
         </div>
       </form>
-      </v-section>
+      </section>
       <div class="circle1"></div>
       <div class="circle2"></div>
       <div class="circle3"></div>
@@ -83,11 +83,12 @@ import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
 import Navbar from "../components/Navbar";
-import NavBar from "@/components/Navbar";
 
 export default {
   name: "login",
-  components: {NavBar},
+  components: {
+    'navbar': Navbar
+  },
   mixins: [validationMixin],
   validations: {
     email: { required, email },
