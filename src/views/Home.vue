@@ -10,7 +10,8 @@
         <div class="content-col content-text">
           <p>Doresti si tu sa lasi un review unui produs? Creeaza-ti un cont chiar acum</p>
           <br />
-          <sign-up />
+          <v-btn v-if="userIsAuthenticated" disabled large class="homebutton text--black font-weight-bold" plain >Înscrie-te</v-btn>
+          <v-btn v-else large class="homebutton text--black font-weight-bold" plain @click="toSignUp" >Înscrie-te</v-btn>
         </div>
         <div class="content-col mr-15">
           <img src="../assets/rating.png" class="img" />
@@ -19,8 +20,10 @@
       <div class="subcontent">
         <div class="content-col subcontent-text">
           <p>Ai deja un cont? Conecteaza-te la el aici</p>
+
           <br />
-          <log-in />
+          <v-btn v-if="userIsAuthenticated" disabled large class="homebutton text--black font-weight-bold" plain >Autentifică-te</v-btn>
+          <v-btn v-else large class="homebutton text--black font-weight-bold" plain @click="toLogIn" >Autentifică-te</v-btn>
         </div>
       </div>
     </div>
@@ -83,14 +86,27 @@
 </template>
 
 <script>
-import Signup from "../components/Signup";
-import Login from "../components/Login";
+import Signup from "./Signup";
+import Login from "./Login";
 import Navbar from "../components/Navbar";
 export default {
   components: {
     'sign-up': Signup,
     'log-in': Login,
     'nav-bar': Navbar
+  },
+  methods: {
+    toSignUp () {
+      this.$router.push('/Signup')
+    },
+    toLogIn () {
+      this.$router.push('/Login')
+    }
+  },
+  computed: {
+    userIsAuthenticated () {
+      return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+    }
   }
 }
 </script>
@@ -99,8 +115,13 @@ export default {
 .main {
   font-family: 'Lato', sans-serif;
 }
+
+.homebutton{
+  background-color: hsl(47, 95%, 49%);
+}
+
 .first_content{
-  background-image: linear-gradient(to bottom right,rgba(0, 204, 255, 0.07),rgba(0, 204, 255, 0.24)),
+  background-image: linear-gradient(180deg, rgba(0,204,255,0.05) 0%, rgba(0,204,255,0.1) 100%),
   url("../assets/tori-1976609_1920.jpg");
   background-position: center;
   background-size: cover;
