@@ -25,12 +25,26 @@ const routes = [
   {
     path: '/Login',
     name: 'Login',
-    component: Login
+    component: Login,
+    beforeEnter: (to, from, next) => {
+      if (store.getters.user) {
+        next('/')
+      } else {
+        next()
+      }
+    }
   },
   {
     path: '/Signup',
     name: 'Signup',
-    component: Signup
+    component: Signup,
+    beforeEnter: (to, from, next) => {
+      if (store.getters.user) {
+        next('/')
+      } else {
+        next()
+      }
+    }
   },
   {
     path: '/user/:id',
@@ -41,7 +55,7 @@ const routes = [
       if (store.getters.user) {
         next()
       } else {
-        next('/')
+        next('/Login')
       }
     }
   },

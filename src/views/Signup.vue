@@ -112,7 +112,6 @@ export default {
     email: '',
     password: '',
     loading: false,
-    dialogSignUp: false
   }),
   computed: {
     nameErrors () {
@@ -147,7 +146,7 @@ export default {
   watch: {
     user (value) {
       if(value !== null && value !== undefined) {
-        this.dialogSignUp = false
+        this.$router.push('/')
         this.loading = false
       }
     }

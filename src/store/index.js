@@ -15,7 +15,8 @@ export default new Vuex.Store({
     users: null,
     userPageLoading: false,
     categorii: null,
-    produse: null
+    produse: null,
+    error: null
   },
   mutations: {
     newUser (state, payload) {
@@ -35,6 +36,9 @@ export default new Vuex.Store({
     },
     setProduse (state, payload) {
       state.produse = payload
+    },
+    setError (state, payload) {
+      state.error = payload
     }
   },
   actions: {
@@ -62,21 +66,21 @@ export default new Vuex.Store({
         })
 
       }).catch(err => {
-        console.log(err)
+        commit('setError', err)
       })
     },
     logUserIn ({commit}, payload) {
       firebase.auth().signInWithEmailAndPassword(payload.email, payload.password).then(() => {
 
       }).catch(err => {
-        console.log(err)
+        commit('setError', err)
       })
     },
     logUserInWithGoogle ({commit}, payload) {
       firebase.auth().signInWithPopup(payload).then(() => {
 
       }).catch(err => {
-        console.log(err)
+        commit('setError', err)
       })
 
     },
@@ -84,7 +88,7 @@ export default new Vuex.Store({
       firebase.auth().signInWithPopup(payload).then(() => {
 
       }).catch(err => {
-        console.log(err)
+        commit('setError', err)
       })
     },
     signUserUpWithGoogle ({commit}, payload) {
@@ -111,7 +115,7 @@ export default new Vuex.Store({
         })
 
       }).then(err => {
-        console.log(err)
+        commit('setError', err)
       })
     },
     signUserUpWithFacebook ({commit}, payload) {
@@ -138,7 +142,7 @@ export default new Vuex.Store({
         })
 
       }).then(err => {
-        console.log(err)
+        commit('setError', err)
       })
     },
     autoSignIn ({commit}, payload) {
@@ -151,7 +155,7 @@ export default new Vuex.Store({
             key: doc.data().key
           }
           commit('userInfo', userInfo)
-        } else console.log("Nu exista")
+        } else commit('setError', 'Acest user nu exista sau a fost sters!')
       })
     },
     logout ({commit}) {
@@ -240,6 +244,9 @@ export default new Vuex.Store({
     },
     produse (state) {
       return state.produse
+    },
+    error (state) {
+      return state.error
     }
   },
   modules: {

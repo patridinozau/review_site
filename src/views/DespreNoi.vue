@@ -37,116 +37,118 @@
       <div class="title" align="center">
         <h1 >Cine sunt membrii echipei?</h1>
       </div>
-      <div class="grad container">
-        <br />
-        <v-card class="card">
-          <v-card-text class="card_text">
-            <div align="center" style="padding:15px;font-weight:800; font-size: 34px;" class="font">
-              <span class="font" style="padding:15px; font-weight:800; font-size: 34px;">- Darius -</span>
-            </div>
-            <br />
-            <div align="center">
-              <v-avatar size="130" style="">
-                <img src="../assets/darius.jpg" />
-              </v-avatar>
-            </div>
-            <br />
-            <div>
-              <span class="font" style="padding-bottom:15px;font-weight: 200; font-size: 17px; align-content:center; display: flex;">Trei cuvinte prin care colegii de echipă l-au descris: </span>
-              <ul style="list-style-position: inside; list-style-type: square">
-                <li>ambițios</li>
-                <li>bun lider</li>
-                <li>foarte muncitor</li>
-              </ul>
-            </div>
-            <br />
-            <div>
-              <h3>Fun fact: știe să se dea bine cu patinele</h3>
-            </div>
-            <br />
-          </v-card-text>
-        </v-card>
-        <v-card class="card">
-          <v-card-text class="card_text">
-            <div align="center" style="padding:15px;font-weight:800; font-size: 34px;" class="font">
-              <span class="font" style="padding:15px;font-weight:800; font-size: 34px;">- Iulian -</span>
-            </div>
-            <br />
-            <div align="center">
-              <v-avatar size="130" style="">
-                <img src="../assets/iulian.jpeg" class />
-              </v-avatar>
-            </div>
-            <br />
-            <div>
-              <span class="font" style="padding-bottom:15px;font-weight: 200; font-size: 17px; align-content:center; display: flex;">Trei cuvinte prin care colegii de echipă l-au descris: </span>
-              <ul style="list-style-position: inside; list-style-type: square">
-                <li>harnic</li>
-                <li>respectuos</li>
-                <li>inteligent</li>
-              </ul>
-            </div>
-            <br />
-            <div>
-              <h3 >Fun fact: știe să facă scheme cu bicicleta</h3>
-            </div>
-          </v-card-text>
-        </v-card>
-        <v-card class="card">
-          <v-card-text class="card_text">
-            <div align="center" style="padding:15px;font-weight:800; font-size: 34px;" class="font">
-              <span class="font" style=" padding:15px;font-weight:800; font-size: 34px;">- Robert -</span>
-            </div>
-            <br />
-            <div align="center">
-              <v-avatar size="130" style="">
-                <img src="../assets/robert.jpg" />
-              </v-avatar>
-            </div>
-            <br />
-            <div>
-              <span class="font" style="padding-bottom:15px;font-weight: 200; font-size: 17px; align-content:center; display: flex;">Trei cuvinte prin care colegii de echipă l-au descris: </span>
-              <ul style="list-style-position: inside; list-style-type: square">
-                <li>deștept</li>
-                <li>atent</li>
-                <li>meticulos</li>
-              </ul>
-            </div>
-            <br />
-            <div>
-              <h3>Fun fact: îi place să schieze</h3>
-            </div>
-            <br />
-          </v-card-text>
-        </v-card>
-        <v-card class="card">
-          <v-card-text class="card_text">
-            <div align="center" style="padding:15px;font-weight:800; font-size: 34px;" class="font">
-              <span class="font" style="padding:15px;font-weight:800; font-size: 34px;">- Patri -</span>
-            </div>
-            <br />
-            <div align="center">
-              <v-avatar size="130" style="">
-                <img src="../assets/patri.jpg" />
-              </v-avatar>
-            </div>
-            <br />
-            <div>
-              <span class="font" style="padding-bottom:15px; font-weight: 200; font-size: 17px; align-content:center; display: flex;">Trei cuvinte prin care colegii de echipă au descris-o: </span>
-              <ul style="list-style-position: inside; list-style-type: square">
-                <li>perfecționistă</li>
-                <li>motivată</li>
-                <li>creativă</li>
-              </ul>
-            </div>
-            <br />
-            <div>
-              <h3>Fun fact: știe să cânte la ukulele</h3>
-            </div>
-            <br />
-          </v-card-text>
-        </v-card>
+      <div class="grad">
+        <div class="container">
+          <br />
+          <v-card class="card">
+            <v-card-text class="card_text">
+              <div align="center" style="padding:15px;font-weight:800; font-size: 34px;" class="font">
+                <span class="font" style="padding:15px; font-weight:800; font-size: 34px;">- Darius -</span>
+              </div>
+              <br />
+              <div align="center">
+                <v-avatar size="130" style="">
+                  <img src="../assets/darius.jpg" />
+                </v-avatar>
+              </div>
+              <br />
+              <div>
+                <span class="font" style="padding-bottom:15px;font-weight: 200; font-size: 17px; align-content:center; display: flex;">Trei cuvinte prin care colegii de echipă l-au descris: </span>
+                <ul style="list-style-position: inside; list-style-type: square">
+                  <li>ambițios</li>
+                  <li>bun lider</li>
+                  <li>foarte muncitor</li>
+                </ul>
+              </div>
+              <br />
+              <div>
+                <h3>Fun fact: știe să se dea bine cu patinele</h3>
+              </div>
+            </v-card-text>
+          </v-card>
+          <v-card class="card">
+            <v-card-text class="card_text">
+              <div align="center" style="padding:15px;font-weight:800; font-size: 34px;" class="font">
+                <span class="font" style="padding:15px;font-weight:800; font-size: 34px;">- Iulian -</span>
+              </div>
+              <br />
+              <div align="center">
+                <v-avatar size="130" style="">
+                  <img src="../assets/iulian.jpeg" class />
+                </v-avatar>
+              </div>
+              <br />
+              <div>
+                <span class="font" style="padding-bottom:15px;font-weight: 200; font-size: 17px; align-content:center; display: flex;">Trei cuvinte prin care colegii de echipă l-au descris: </span>
+                <ul style="list-style-position: inside; list-style-type: square">
+                  <li>harnic</li>
+                  <li>respectuos</li>
+                  <li>inteligent</li>
+                </ul>
+              </div>
+              <br />
+              <div>
+                <h3 >Fun fact: știe să facă scheme cu bicicleta</h3>
+              </div>
+            </v-card-text>
+          </v-card>
+          <v-card class="card">
+            <v-card-text class="card_text">
+              <div align="center" style="padding:15px;font-weight:800; font-size: 34px;" class="font">
+                <span class="font" style=" padding:15px;font-weight:800; font-size: 34px;">- Robert -</span>
+              </div>
+              <br />
+              <div align="center">
+                <v-avatar size="130" style="">
+                  <img src="../assets/robert.jpg" />
+                </v-avatar>
+              </div>
+              <br />
+              <div>
+                <span class="font" style="padding-bottom:15px;font-weight: 200; font-size: 17px; align-content:center; display: flex;">Trei cuvinte prin care colegii de echipă l-au descris: </span>
+                <ul style="list-style-position: inside; list-style-type: square">
+                  <li>deștept</li>
+                  <li>atent</li>
+                  <li>meticulos</li>
+                </ul>
+              </div>
+              <br />
+              <div>
+                <h3>Fun fact: îi place să schieze</h3>
+              </div>
+              <br />
+            </v-card-text>
+          </v-card>
+          <v-card class="card">
+            <v-card-text class="card_text">
+              <div align="center" style="padding:15px;font-weight:800; font-size: 34px;" class="font">
+                <span class="font" style="padding:15px;font-weight:800; font-size: 34px;">- Patri -</span>
+              </div>
+              <br />
+              <div align="center">
+                <v-avatar size="130" style="">
+                  <img src="../assets/patri.jpg" />
+                </v-avatar>
+              </div>
+              <br />
+              <div>
+                <span class="font" style="padding-bottom:15px; font-weight: 200; font-size: 17px; align-content:center; display: flex;">Trei cuvinte prin care colegii de echipă au descris-o: </span>
+                <ul style="list-style-position: inside; list-style-type: square">
+                  <li>perfecționistă</li>
+                  <li>motivată</li>
+                  <li>creativă</li>
+                </ul>
+              </div>
+              <br />
+              <div>
+                <h3>Fun fact: știe să cânte la ukulele</h3>
+              </div>
+              <br />
+            </v-card-text>
+          </v-card>
+        </div>
       </div>
+
     </div>
   </v-main>
 </template>
@@ -167,7 +169,7 @@
   }
   .grad {
     background: rgb(255,255,255);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(0,204,255,0.1) 23%, rgba(0,204,255,0.3) 100%);
+    background: linear-gradient(180deg, rgba(0,204,255,0.05) 0%, rgba(0,204,255,0.1) 100%);
   }
   .container {
     display:flex;

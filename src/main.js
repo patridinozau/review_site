@@ -38,7 +38,6 @@ new Vue({
       }
     })
     this.$store.dispatch('loadUsers')
-
     // const produs = {
     //   name: 'Arctic AD54240M30W',
     //   reviews:'120',

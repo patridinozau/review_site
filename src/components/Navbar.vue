@@ -29,9 +29,7 @@
       <v-menu offset-y>
         <template v-slot:activator="{ on }">
           <v-avatar v-on="on">
-            <v-icon dark class="avatarr">
-              mdi-account-circle
-            </v-icon>
+            <img :src="user.profileImg" class="avatarr">
           </v-avatar>
         </template>
         <v-list class="list">
@@ -103,6 +101,9 @@
     computed: {
       userIsAuthenticated () {
         return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+      },
+      user () {
+        return this.$store.getters.user
       }
     },
     methods: {
@@ -151,8 +152,9 @@
   }
   .avatarr{
     cursor: pointer;
-    color: lightgrey;
-    font-size:40px;
+    font-size:32px;
+    height: 42px;
+    width: 42px;
   }
   .list{
     width:230px;

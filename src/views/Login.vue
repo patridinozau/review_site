@@ -124,7 +124,7 @@ export default {
   watch: {
     user (value) {
       if(value !== null && value !== undefined) {
-        this.dialogLogIn = false
+        this.$router.push('/')
         this.loading = false
       }
     }
