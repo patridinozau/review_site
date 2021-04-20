@@ -107,6 +107,7 @@ export default new Vuex.Store({
           userName: cred.additionalUserInfo.profile.name,
           profileImg: cred.additionalUserInfo.profile.picture
         }
+        console.log(cred)
         firebase.database().ref('users').push(newUser).then((data) => {
           const newUserWithId = {
             userName: cred.additionalUserInfo.profile.name,

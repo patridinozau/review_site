@@ -68,6 +68,9 @@ import Navbar from "../components/Navbar";
       rules: [v => v.length <= 75 || 'Maxim 75 de caractere'],
       value: '',
     }),
+    created() {
+      this.$store.dispatch('loadUsers')
+    },
     components: {
     'nav-bar': Navbar
   },

@@ -10,6 +10,9 @@
         ></v-progress-circular>
         <div class="d-flex flex-no-wrap" v-if="!loading">
             <div style="width:30%">
+                <div class="button">
+                    <add-product />
+                </div>
                 <div class="zonaFiltre">
                     <div class="Filtre" style="padding:15px">
                         <H3 style="margin-bottom:8px">Cauta dupa stele</H3>
@@ -37,9 +40,6 @@
             <v-container>
                 <v-row>
                     <v-col>
-                        <div class="button">
-                            <add-product />
-                        </div>
                         <v-card class="pa-7 mb-4" v-for="produs in produse" :key="produs.id">
                             <div><img @click="goToProduct(produs.id)" class="imagini" :src="produs.img" alt="alt text" /></div>
                             <div>
