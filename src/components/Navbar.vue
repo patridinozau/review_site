@@ -163,7 +163,7 @@
     font-size:30px;
   }
   .haha:hover{
-    background-color: #e3e3fd;
+    background-color: rgba(0,204,255,0.1);
   }
   .search-input{
     background: white;
