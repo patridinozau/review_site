@@ -1,5 +1,5 @@
 <template>
-  <v-main class="main">
+  <v-main class="">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Roboto:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
@@ -112,7 +112,7 @@ export default {
 </script>
 
 <style>
-.main {
+template {
   font-family: 'Lato', sans-serif;
 }
 
