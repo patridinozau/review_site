@@ -8,6 +8,7 @@ import categorii from "../components/categorii";
 import categorie from "../views/categorie";
 import Login from '../views/Login.vue'
 import Signup from '../views/Signup.vue'
+import produs from "../views/produs";
 
 Vue.use(VueRouter)
 
@@ -69,6 +70,12 @@ const routes = [
     name: 'categorie',
     props: true,
     component: categorie
+  },
+  {
+    path: '/categorii/:catId/produs/:prodId',
+    name: 'Produs',
+    props: true,
+    component: produs
   }
 
 ]

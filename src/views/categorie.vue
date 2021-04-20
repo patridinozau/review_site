@@ -37,8 +37,11 @@
             <v-container>
                 <v-row>
                     <v-col>
+                        <div class="button">
+                            <add-product />
+                        </div>
                         <v-card class="pa-7 mb-4" v-for="produs in produse" :key="produs.id">
-                            <div><img class="imagini" :src="produs.img" alt="alt text" /></div>
+                            <div><img @click="goToProduct(produs.id)" class="imagini" :src="produs.img" alt="alt text" /></div>
                             <div>
                                 <div class="rat" style="margin-top: 2px">
                                     ({{produs.rating}})</div>
@@ -51,7 +54,7 @@
                                           size="25"
                                           :value=produs.rating
                                 ></v-rating>
-                                <v-card-title class="texti">{{ produs.name }}</v-card-title>
+                                <v-card-title @click="goToProduct(produs.id)" class="texti">{{ produs.name }}</v-card-title>
                                 <v-card-subtitle class="tex">Reviews: {{ produs.reviews}}</v-card-subtitle>
                                 <v-card-text class="tex">{{ produs.descriere }}</v-card-text>
                             </div>
@@ -65,11 +68,13 @@
 
 <script>
     import Navbar from "../components/Navbar";
+    import AddProdusPopup from "../components/AddProdusPopup";
     export default {
         name: "categorie",
         props: ['id'],
         components: {
-            'navbar': Navbar
+            'navbar': Navbar,
+            'add-product': AddProdusPopup
         },
         created () {
             this.$store.dispatch('loadProduse', this.id)
@@ -85,6 +90,11 @@
             },
             loading () {
                 return this.$store.getters.loading
+            }
+        },
+        methods: {
+            goToProduct (id) {
+                this.$router.push('/categorii/' + this.id + '/produs/' + id)
             }
         }
     }
@@ -127,6 +137,9 @@
         float: right;
         font-size: 14px;
         padding: 3px;
-
+    }
+    .button {
+        margin-bottom: 30px;
+        text-align: center;
     }
 </style>

@@ -1,6 +1,7 @@
 <template>
   <div>
     <navbar />
+    <snackbar />
 
   <v-main>
     <div class="main">
@@ -95,11 +96,13 @@ import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
 import Navbar from "../components/Navbar";
+import snackbar from "../components/snackbar";
 
 export default {
   name: "signup",
   components: {
-    'navbar': Navbar
+    'navbar': Navbar,
+    'snackbar': snackbar
   },
   mixins: [validationMixin],
   validations: {
@@ -141,12 +144,24 @@ export default {
     },
     userIsAuthenticated () {
       return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+    },
+    error () {
+      return this.$store.getters.error
     }
   },
   watch: {
     user (value) {
       if(value !== null && value !== undefined) {
         this.$router.push('/')
+        this.loading = false
+      }
+    },
+    error (value) {
+      if(value !== null && value !== undefined) {
+        this.$v.$reset()
+        this.name = ''
+        this.email = ''
+        this.password = ''
         this.loading = false
       }
     }

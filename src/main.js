@@ -38,14 +38,14 @@ new Vue({
       }
     })
     this.$store.dispatch('loadUsers')
-    // const produs = {
-    //   name: 'Arctic AD54240M30W',
-    //   reviews:'120',
-    //   rating: 4.4,
-    //   descriere:'Un frigider compact, cu doua usi si un volum net total de 223 litri. Rafturile ajustabile ofera un grad ridicat de ﬂexibilitate in organizarea frigiderului, ﬁind ideal pentru familiile ce cauta o solutie practica si avantajoasa.',
+    // const parere = {
+    //   name: 'Gigel',
+    //   title: 'Bun',
+    //   rating: 3,
+    //   text: 'Text ',
     //   img: 'https://firebasestorage.googleapis.com/v0/b/itec-8b9cf.appspot.com/o/categorii_img%2Faplicatii.jpg?alt=media&token=5ef9b988-5153-4559-abb5-3e28f76ce72b'
     // }
-    // firebase.database().ref('categorii/-MYORmyTLR15iltlcQBs/produse').push(produs)
+    // firebase.database().ref('categorii/-MYORmyTLR15iltlcQBs/produse/-MY_rOygH7nrx-z_Xl8c/pareri').push(parere)
 
   }
 }).$mount('#app')

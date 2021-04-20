@@ -16,7 +16,9 @@ export default new Vuex.Store({
     userPageLoading: false,
     categorii: null,
     produse: null,
-    error: null
+    error: null,
+    reviews: null,
+    prod: null
   },
   mutations: {
     newUser (state, payload) {
@@ -39,6 +41,12 @@ export default new Vuex.Store({
     },
     setError (state, payload) {
       state.error = payload
+    },
+    setReviews (state, payload) {
+      state.reviews = payload
+    },
+    setProd (state, payload) {
+      state.prod = payload
     }
   },
   actions: {
@@ -194,9 +202,10 @@ export default new Vuex.Store({
             img: obj[key].img,
             description: obj[key].description
           })
+        }
           commit('setCategorii', categorii)
           commit('setLoading', false)
-        }
+
       }).catch(err => {
         commit('setLoading', false)
         console.log(err)
@@ -216,9 +225,56 @@ export default new Vuex.Store({
             rating: obj[key].rating,
             reviews: obj[key].reviews
           })
+        }
           commit('setProduse', produse)
           commit('setLoading', false)
+
+      }).catch(err => {
+        commit('setLoading', false)
+        console.log(err)
+      })
+    },
+    loadProd ({commit}, payload) {
+      commit('setLoading', true)
+      firebase.database().ref('/categorii/' + payload.catId + '/produse/' + payload.prodId)
+          .once('value').then((data) => {
+        const prod = []
+        const obj = data.val()
+        prod.push({
+          id: payload.prodId,
+          name: obj.name,
+          descriere: obj.descriere,
+          rating: obj.rating,
+          reviews: obj.reviews,
+          img: obj.img
+        })
+        commit('setProd', prod)
+        commit('setLoading', false)
+
+      }).catch(err => {
+        commit('setLoading', false)
+        console.log(err)
+      })
+    },
+    loadProductReviews ({commit}, payload) {
+      commit('setLoading', true)
+      firebase.database().ref('/categorii/' + payload.catId + '/produse/' + payload.prodId + '/pareri')
+          .once('value').then((data) => {
+            const reviews = []
+            const obj = data.val()
+        for(let key in obj) {
+          reviews.push({
+            id: key,
+            name: obj[key].name,
+            title: obj[key].title,
+            rating: obj[key].rating,
+            text: obj[key].text,
+            img: obj[key].img
+          })
         }
+          commit('setReviews', reviews)
+          commit('setLoading', false)
+
       }).catch(err => {
         commit('setLoading', false)
         console.log(err)
@@ -247,6 +303,12 @@ export default new Vuex.Store({
     },
     error (state) {
       return state.error
+    },
+    reviews (state) {
+      return state.reviews
+    },
+    theProd (state) {
+      return state.prod
     }
   },
   modules: {
