@@ -59,7 +59,7 @@
         <v-text-field
             prepend-inner-icon="mdi-key"
             clearable
-            label="Parolă"
+            label="Parola"
             type="password"
             v-model="password"
             :error-messages="passwordErrors"

@@ -8,7 +8,20 @@
               <div>
                 <form @submit.prevent="submitForm">
                   <div @click="dialogadd = !dialogadd"><v-icon class="closeIcon">mdi-close</v-icon></div>
-                  <h1>Adauga un review!</h1>
+                  <h1>Adauga un review pentru</h1>
+                    <br />
+                  <br />
+                    <div>
+                      <v-row>
+                        <v-col>
+                          <div><h2 style="float: left; justify-content: center; align-content: center; display: flex;">Frigider arctic AD54240M30W</h2></div>
+                        </v-col>
+                        <v-col>
+                          <div><img class="imagine" src="../assets/aplicatii.jpg"/></div>
+                        </v-col>
+                      </v-row>
+                    </div>
+                    <br />
                     <br />
                     <div align="center">
                         <p>Acorda o nota:</p>
@@ -59,7 +72,7 @@
                     <div align="center">
                         <br />
                         <v-btn class="mr-4 " style="font-family: 'Lato', sans-serif; font-weight: bold;" type="submit" :loading="loading">trimite</v-btn>
-                        <v-btn @click="clear" style="font-family: 'Lato', sans-serif; font-weight: bold;">golește</v-btn>
+                        <v-btn @click="clear" style="font-family: 'Lato', sans-serif; font-weight: bold;">goleste</v-btn>
                     </div>
                 </form>
               </div>
@@ -176,5 +189,13 @@
         justify-items: center;
         display: flex;
         color: #cccccc;
+    }
+
+    .imagine {
+      float: right;
+      align-content: end;
+      justify-content: center;
+      display: flex;
+      width:60%;
     }
 </style>
