@@ -1,8 +1,6 @@
 <template>
   <v-main class="">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+
     <nav-bar />
 
     <div class="first_content">
@@ -40,7 +38,7 @@
         </div>
 
         <div class="content-parag">
-          <p>
+          <p style="font-family: 'Lato', sans-serif; font-weight: bold;">
             HonestReviews este un website prin intermediul caruia utilizatorii pot lasa review-uri, adica pareri, oricarui produs pe care l-au achizitionat.
             Un asa-zis "review" consta in exprimarea propriei opinii in legatura cu produsul ales.
             De asemenea, sunt mentionate sursa de unde a fost achizitionat produsul, numele intreg al acestuia, pretul si alte informatii utile.
@@ -71,7 +69,7 @@
         </div>
 
         <div class="content-parag">
-          <p>
+          <p style="font-family: 'Lato', sans-serif; font-weight: bold;">
             Site-ul nostru va ofera o modalitate usoara de a scrie sau de a cauta impresii ale altor utilizatori despre orice fel ce produs.
             De la frigidere la computere, de la masini la biciclete, de la resorturi turistice la restaurante, aici puteti gasi un review pentru orice categorie imaginabila.
             Datorita interfatei construita sa fie usor de folosit, oricine poate beneficia de acest site.
@@ -112,9 +110,6 @@ export default {
 </script>
 
 <style>
-template {
-  font-family: 'Lato', sans-serif;
-}
 
 .homebutton{
   background-color: hsl(47, 95%, 49%);
@@ -200,6 +195,7 @@ template {
 .content-parag{
   font-size: 20px;
   font-weight: 200;
+  font-family: 'Lato', sans-serif;
 }
 .content-image{
   margin-right: 30px;

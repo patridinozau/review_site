@@ -1,5 +1,6 @@
 <template>
     <v-main>
+      <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
         <div style="height:350px;width:2000px;position: absolute;top: 0px;z-index: 1;" class="grey lighten-3"></div>
         <navbar />
         <v-progress-circular
@@ -28,7 +29,7 @@
                                               size="25"
                                               :value=theProd[0].rating
                                     ></v-rating>
-                                    <v-card-title class="texti">{{theProd[0].name}}</v-card-title>
+                                    <v-card-title class="titlu">{{theProd[0].name}}</v-card-title>
                                     <v-card-subtitle class="tex">Rewiews: {{theProd[0].reviews}}</v-card-subtitle>
                                     <v-card-text class="tex">{{ theProd[0].descriere}}</v-card-text>
                                     <div>
@@ -63,7 +64,7 @@
                                     <v-avatar style="float: left">
                                         <img src="../assets/darius.jpg" class="avatarr">
                                     </v-avatar>
-                                    <v-card-title>{{review.name}}</v-card-title>
+                                    <v-card-title class="titlu">{{review.name}}</v-card-title>
                                     <v-card-title class="texti">{{review.title}}</v-card-title>
                                     <v-card-text class="tex">{{review.text}}</v-card-text>
                                 </div>
@@ -135,15 +136,23 @@
         margin-left: 130px
     }
     .texti{
-        font-family:"Arial Black";
         padding:10px;
-
+        font-family: 'Lato', sans-serif;
+        font-weight: bold;
     }
     .tex{
         font-size:15px;
         padding:7px;
+        font-family: 'Lato', sans-serif;
+        font-weight: bold;
 
     }
+
+    .titlu {
+      font-family: 'Archivo Black', sans-serif;
+      font-weight: bold;
+    }
+
     .ste{
         color: #ff9454;
         float: right;
@@ -154,6 +163,8 @@
         font-size: 20px;
         padding: 3px;
         margin-top: 13px;
+      font-family: 'Lato', sans-serif;
+      font-weight: bold;
     }
     .stangaDivProd{
         margin-right:7%;

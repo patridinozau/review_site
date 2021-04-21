@@ -1,6 +1,6 @@
 <template>
     <v-main>
-        <v-snackbar v-model="snackbar" :timeout="4000" dark bottom color="grey--lighten-3">
+        <v-snackbar v-model="snackbar" :timeout="4000" dark bottom color="grey--lighten-3" style="font-family: 'Lato', sans-serif;font-weight: bold;">
             <span>{{ error }}</span>
             <v-btn text temporary dark @click="snackbar = false"><v-icon>mdi-close</v-icon></v-btn>
         </v-snackbar>

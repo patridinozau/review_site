@@ -6,10 +6,6 @@
 
         <v-card>
             <div class="main">
-                <link rel="preconnect" href="https://fonts.gstatic.com">
-                <link rel="preconnect" href="https://fonts.gstatic.com">
-                <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-
                 <form @submit.prevent="submitForm">
                     <div @click="dialogadd = !dialogadd"><v-icon class="closeIcon">mdi-close</v-icon></div>
                     <h1>Adauga un produs!</h1>
@@ -58,8 +54,8 @@
                     </div>
                     <div align="center">
                         <br />
-                        <v-btn class="mr-4 " type="submit" :loading="loading">trimite</v-btn>
-                        <v-btn @click="clear">golește</v-btn>
+                        <v-btn class="mr-4 " style="font-family: 'Lato', sans-serif; font-weight: bold;" type="submit" :loading="loading">trimite</v-btn>
+                        <v-btn @click="clear" style="font-family: 'Lato', sans-serif; font-weight: bold;">golește</v-btn>
                     </div>
                 </form>
 
@@ -165,6 +161,7 @@
         display: flex;
         padding: 60px;
         font-family: 'Lato', sans-serif;
+        font-weight: bold;
     }
 
     .homebutton{
