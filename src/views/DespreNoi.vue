@@ -1,7 +1,6 @@
 <template>
   <v-main class="font">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Roboto:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
     <navbar />
     <br />
@@ -17,7 +16,7 @@
             </div>
 
             <div class="content-parag">
-              <p>
+              <p style="font-family: 'Lato', sans-serif; font-weight: bold;">
                 De la inceputul pandemiei de covid-19, viata fiecaruia dintre noi s-a schimbat radical.
                 Odata cu implementarea masurilor de siguranta, cu totii am inceput sa facem cumparaturi online mai des.
                 Astfel, consideram ca este benefica existenta unui spatiu virtual unde oricine poate lasa sau gasi o recenzie.
@@ -35,7 +34,7 @@
       <div style="padding:20px" class="separator"><v-icon>mdi-chevron-triple-right</v-icon></div>
       <br />
       <div class="title" align="center">
-        <h1 >Cine sunt membrii echipei?</h1>
+        <h1 class="font">Cine sunt membrii echipei?</h1>
       </div>
       <div class="grad">
         <div class="container">
@@ -53,7 +52,7 @@
               </div>
               <br />
               <div>
-                <span class="font" style="padding-bottom:15px;font-weight: 200; font-size: 17px; align-content:center; display: flex;">Trei cuvinte prin care colegii de echipă l-au descris: </span>
+                <span class="font" style="padding-bottom:15px; font-size: 17px; align-content:center; display: flex;">Trei cuvinte prin care colegii de echipă l-au descris: </span>
                 <ul style="list-style-position: inside; list-style-type: square">
                   <li>ambițios</li>
                   <li>bun lider</li>
@@ -175,6 +174,7 @@
     display:flex;
     align-content: center;
     justify-content: center;
+    font-family: 'Archivo Black', sans-serif;
   }
   .card {
     width: 40%;
@@ -185,11 +185,7 @@
     justify-content: center;
     display: flex;
   }
-  /*.card_text {*/
-  /*  align-content: center;*/
-  /*  justify-content: center;*/
-  /*  display: flex;*/
-  /*}*/
+
   .title {
     margin-bottom: 15px;
     font-size: 200px;
@@ -230,6 +226,7 @@
   .content-parag{
     font-size: 20px;
     font-weight: 100;
+    font-family: 'Archivo Black', sans-serif;
   }
   .content-image{
     margin-right: 30px;

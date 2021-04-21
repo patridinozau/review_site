@@ -5,17 +5,14 @@
   <v-main>
 
     <div class="main">
-      <link rel="preconnect" href="https://fonts.gstatic.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com">
-      <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
       <section class="formdesign">
       <form @submit.prevent="submitLogIn">
-        <h1>Autentifică-te!</h1>
+        <h1>Autentifica-te!</h1>
         <br />
         <hr />
         <br />
         <div>
-          <span class="text">Autentifică-te cu</span>
+          <span class="text">Autentifica-te cu</span>
         </div>
         <br />
         <div class="wrapper">
@@ -37,6 +34,8 @@
         <br />
 
         <v-text-field
+            prepend-inner-icon="mdi-email"
+            clearable
             v-model="email"
             :error-messages="emailErrors"
             label="E-Mail"
@@ -46,7 +45,9 @@
         </v-text-field>
 
         <v-text-field
-            label="Parolă"
+            prepend-inner-icon="mdi-key"
+            clearable
+            label="Parola"
             type="password"
             v-model="password"
             :error-messages="passwordErrors"
@@ -56,15 +57,15 @@
         </v-text-field>
         <br />
         <div align="center">
-          <v-btn class="mr-4" type="submit" :loading="loading">trimite</v-btn>
-          <v-btn class="bttn" @click="clear">golește</v-btn>
+          <v-btn class="mr-4" style="font-family: 'Lato', sans-serif; font-weight: bold;" type="submit" :loading="loading">trimite</v-btn>
+          <v-btn class="bttn"  style="font-family: 'Lato', sans-serif; font-weight: bold;" @click="clear">goleste</v-btn>
         </div>
         <br />
         <br />
         <hr class="text"/>
         <div class="text">
-          <span>Încă nu ți-ai creat un cont?</span>
-          <v-btn text class="ml-3" float="right" @click="toSignUp">Înscrie-te</v-btn>
+          <span>Inca nu ti-ai creat un cont?</span>
+          <v-btn text class="ml-3"  style="font-family: 'Lato', sans-serif; font-weight: bold;" float="right" @click="toSignUp">Inscrie-te</v-btn>
         </div>
       </form>
       </section>

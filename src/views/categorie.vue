@@ -14,7 +14,7 @@
                     <add-product :catKey="catKey" />
                 </div>
                 <div class="zonaFiltre">
-                    <div class="Filtre" style="padding:15px">
+                    <div class="Filtre" style="padding:15px; font-family: 'Lato', sans-serif; font-weight: bold;">
                         <H3 style="margin-bottom:8px">Cauta dupa stele</H3>
                         <div style="margin-top: 0px">
                             <v-checkbox class="stele" v-model="stea" value="stea1" :label="`1 stea`"></v-checkbox>
@@ -26,7 +26,7 @@
                         </div>
                     </div>
                     <div class="Filtre" style="padding:15px">
-                        <H3 style="margin-bottom:8px">Nr. de review-uri</H3>
+                        <H3 style="margin-bottom:8px; padding:15px; font-family: 'Lato', sans-serif; font-weight: bold;">Nr. de review-uri</H3>
                         <div style="margin-top: 0px">
                             <v-checkbox class="stele" v-model="nr" value="nr1" :label="`0-5`"></v-checkbox>
                             <v-checkbox class="stele" v-model="nr" value="nr2" :label="`5-10`"></v-checkbox>
@@ -42,7 +42,7 @@
                         <v-card class="pa-7 mb-4" v-for="produs in produse" :key="produs.id">
                             <div><img @click="goToProduct(produs.id)" class="imagini" :src="produs.img" alt="alt text" /></div>
                             <div>
-                                <div class="rat" style="margin-top: 2px">
+                                <div class="rat" style="margin-top: 2px; font-family: 'Lato', sans-serif;">
                                     ({{produs.rating}})</div>
                                 <v-rating class="ste"
                                           background-color="warning lighten-1"
@@ -140,7 +140,9 @@
         margin-right: 20px;
     }
     .stele{
-        margin-top: 0px;
+        margin-top: 0;
+      font-family: 'Lato', sans-serif;
+      font-weight: bold;
     }
     .imagini{
         width:220px;
@@ -149,7 +151,7 @@
         cursor: pointer;
     }
     .texti{
-        font-family:"Arial Black";
+        font-family: 'Arial Black', sans-serif;
         padding:10px;
         cursor: pointer;
 
@@ -157,7 +159,8 @@
     .tex{
         font-size:15px;
         padding:7px;
-
+        font-family: 'Lato', sans-serif;
+        font-weight: bold;
     }
     .ste{
         color: #ff9454;

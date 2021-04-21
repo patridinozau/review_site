@@ -1,8 +1,5 @@
 <template>
     <v-main>
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Roboto:wght@300&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
         <navbar />
         <br />
         <br />
@@ -83,6 +80,8 @@
         left: 50%;
         transform: translate(-50%, -50%);
         font-size: 18px;
+      font-family: 'Lato', sans-serif;
+      font-weight: bold;
     }
     .imagini{
         opacity: 1.0;

@@ -42,10 +42,10 @@
               </v-list-item-icon>
 
               <v-list-item-content>
-                <v-list-item-title>Profil</v-list-item-title>
+                <v-list-item-title style="font-family: 'Lato', sans-serif;font-weight: bold;">Profil</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
-            <v-list-item @click="logout" class="haha">
+            <v-list-item style="font-family: 'Lato', sans-serif;font-weight: bold;" @click="logout" class="haha">
               <v-list-item-icon>
                 <v-icon class="ava">
                   mdi-logout
@@ -128,6 +128,8 @@
 
   .font {
     font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    /*font-family: 'Archivo Black', sans-serif;*/
   }
 
   .navbar {
@@ -138,7 +140,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    padding: 8px;
+    padding: 9px;
     background-color: hsl(135, 0%, 25%);
     z-index: 100000;
   }

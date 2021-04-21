@@ -5,9 +5,6 @@
 
   <v-main>
     <div class="main">
-      <link rel="preconnect" href="https://fonts.gstatic.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com">
-      <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
       <section class="formdesign">
       <form  @submit.prevent="submitForm">
         <h1>Înscrie-te!</h1>
@@ -37,6 +34,8 @@
         <br />
         <div align="center">
           <v-text-field
+              clearable
+              prepend-inner-icon="mdi-account-circle"
               v-model="name"
               :error-messages="nameErrors"
               :counter="15"
@@ -47,6 +46,8 @@
           </v-text-field></div>
 
         <v-text-field
+            prepend-inner-icon="mdi-email"
+            clearable
             v-model="email"
             :error-messages="emailErrors"
             label="E-Mail"
@@ -56,7 +57,9 @@
         </v-text-field>
 
         <v-text-field
-            label="Parolă"
+            prepend-inner-icon="mdi-key"
+            clearable
+            label="Parola"
             type="password"
             v-model="password"
             :error-messages="passwordErrors"
@@ -66,15 +69,15 @@
         </v-text-field>
         <br />
         <div align="center">
-          <v-btn class="mr-4 bttn" type="submit" :loading="loading">trimite</v-btn>
-          <v-btn class="bttn" @click="clear">golește</v-btn>
+          <v-btn class="mr-4 bttn"  style="font-family: 'Lato', sans-serif; font-weight: bold;" type="submit" :loading="loading">trimite</v-btn>
+          <v-btn class="bttn"  style="font-family: 'Lato', sans-serif; font-weight: bold;" @click="clear">goleste</v-btn>
         </div>
         <br />
         <br />
         <hr class="text"/>
         <div class="text">
           <span>Ai deja un cont?</span>
-          <v-btn class="ml-3" text float="right" @click="toLogIn">Autentifică-te</v-btn>
+          <v-btn class="ml-3" text  style="font-family: 'Lato', sans-serif; font-weight: bold;" float="right" @click="toLogIn">Autentifica-te</v-btn>
         </div>
       </form>
 

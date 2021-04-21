@@ -2,8 +2,6 @@
   <div>
     <v-main class="main">
       <nav-bar />
-      <link rel="preconnect" href="https://fonts.gstatic.com">
-      <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Roboto:wght@300&display=swap" rel="stylesheet">
       <br><br><br><br>
       <div class="profileCard" >
         <v-divider vertical dark inset/>

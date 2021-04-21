@@ -6,10 +6,6 @@
 
         <v-card>
             <div class="main">
-                <link rel="preconnect" href="https://fonts.gstatic.com">
-                <link rel="preconnect" href="https://fonts.gstatic.com">
-                <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-
                 <form @submit.prevent="submitForm">
                     <div @click="dialogadd = !dialogadd"><v-icon class="closeIcon">mdi-close</v-icon></div>
                     <h1>Adauga un produs!</h1>
@@ -17,6 +13,7 @@
                     <div align="center">
 
                         <v-text-field
+                                prepend-inner-icon="mdi-format-title"
                                 v-model="nume"
                                 label="Nume"
                                 :error-messages="nameErrors"
@@ -25,6 +22,7 @@
                         ></v-text-field>
 
                         <v-textarea
+                                prepend-inner-icon="mdi-lead-pencil"
                                 v-model="description"
                                 label="Descriere"
                                 auto-grow
@@ -35,6 +33,7 @@
                         ></v-textarea>
                         <div>
                             <v-file-input
+                                    prepend-inner-icon="mdi-format-title"
                                     label="Adaugati o imagine"
                                     dense
                                     required
@@ -45,6 +44,7 @@
                             <img :src="this.imageUrl" class="imagePreview" v-if="this.picture">
                         </div>
                         <v-text-field
+                                prepend-inner-icon="mdi-link"
                                 v-model="link"
                                 label="Link"
                                 required
@@ -54,10 +54,8 @@
                     </div>
                     <div align="center">
                         <br />
-                        <hr />
-                        <br />
-                        <v-btn class="mr-4 " type="submit" :loading="loading">trimite</v-btn>
-                        <v-btn @click="clear">golește</v-btn>
+                        <v-btn class="mr-4 " style="font-family: 'Lato', sans-serif; font-weight: bold;" type="submit" :loading="loading">trimite</v-btn>
+                        <v-btn @click="clear" style="font-family: 'Lato', sans-serif; font-weight: bold;">goleste</v-btn>
                     </div>
                 </form>
 
@@ -163,6 +161,7 @@
         display: flex;
         padding: 60px;
         font-family: 'Lato', sans-serif;
+        font-weight: bold;
     }
 
     .homebutton{
