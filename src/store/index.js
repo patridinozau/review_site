@@ -4,6 +4,7 @@ import firebase from "firebase/app";
 import 'firebase/auth'
 import 'firebase/database'
 import 'firebase/firestore'
+import 'firebase/storage'
 import router from "../router";
 
 Vue.use(Vuex)
@@ -107,7 +108,6 @@ export default new Vuex.Store({
           userName: cred.additionalUserInfo.profile.name,
           profileImg: cred.additionalUserInfo.profile.picture
         }
-        console.log(cred)
         firebase.database().ref('users').push(newUser).then((data) => {
           const newUserWithId = {
             userName: cred.additionalUserInfo.profile.name,
@@ -224,7 +224,8 @@ export default new Vuex.Store({
             img: obj[key].img,
             name: obj[key].name,
             rating: obj[key].rating,
-            reviews: obj[key].reviews
+            reviews: obj[key].reviews,
+            link: obj[key].link
           })
         }
           commit('setProduse', produse)
@@ -247,7 +248,8 @@ export default new Vuex.Store({
           descriere: obj.descriere,
           rating: obj.rating,
           reviews: obj.reviews,
-          img: obj.img
+          img: obj.img,
+          link: obj.link
         })
         commit('setProd', prod)
         commit('setLoading', false)
@@ -278,6 +280,27 @@ export default new Vuex.Store({
 
       }).catch(err => {
         commit('setLoading', false)
+        console.log(err)
+      })
+    },
+    uploadProdus ({commit}, payload) {
+      commit('setLoading', true)
+      firebase.storage().ref('produse_img/' + payload.pictureName).put(payload.picture)
+          .then((fileData) => {
+             fileData.ref.getDownloadURL().then((url) => {
+              firebase.database().ref('/categorii/' + payload.catKey + '/produse').push({
+                descriere: payload.description,
+                name: payload.nume,
+                link: payload.link,
+                rating: 0,
+                reviews: 0,
+                creatorKey: payload.userKey,
+                img: url
+              })
+            })
+
+            console.log("Upload complete")
+          }).catch(err => {
         console.log(err)
       })
     }

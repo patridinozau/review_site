@@ -1,21 +1,21 @@
 <template>
-    <v-main style="margin:auto;width:70%">
+    <v-main>
+        <div style="height:350px;width:2000px;position: absolute;top: 0px;z-index: 1;" class="grey lighten-3"></div>
         <navbar />
-        <br><br><br><br><br>
         <v-progress-circular
                 :size="50"
                 color="primary"
                 indeterminate
                 v-if="loading"
         ></v-progress-circular>
-        <div v-if="!loading">
+        <br><br><br>
+        <div v-if="!loading" style="z-index:999;position: relative;margin:auto;width:70%">
             <div>
                 <v-container>
                     <v-row>
                         <v-col>
-                            <v-card class="pa-7 mb-4 d-flex flex-no-wrap">
-                                <div><img class="imagini" :src="theProd[0].img" alt="alt text" /></div>
-                                <div>
+                            <div class="pa-7 mb-4 d-flex flex-no-wrap">
+                                <div class="stangaDivProd">
                                     <div class="rat">
                                         ({{theProd[0].rating}})</div>
                                     <v-rating class="ste"
@@ -30,9 +30,13 @@
                                     <v-card-title class="texti">{{theProd[0].name}}</v-card-title>
                                     <v-card-subtitle class="tex">Rewiews: {{theProd[0].reviews}}</v-card-subtitle>
                                     <v-card-text class="tex">{{ theProd[0].descriere}}</v-card-text>
-<!--                                    <a target="_blank">Vezi pe site</a>-->
+                                    <v-btn href="https://www.google.com/" class="button text--black font-weight-bold" plain>
+                                        Link Produs
+                                    </v-btn>
+                                    <!--                                    <a target="_blank">Vezi pe site</a>-->
                                 </div>
-                            </v-card>
+                                <div><img class="imagDesc" :src="theProd[0].img" alt="alt text" /></div>
+                            </div>
                         </v-col>
                     </v-row>
                 </v-container>
@@ -54,11 +58,14 @@
                                               size="25"
                                               :value=review.rating
                                     ></v-rating>
-                                    <v-card-title >{{review.name}}</v-card-title>
+                                    <v-avatar style="float: left">
+                                        <img src="../assets/darius.jpg" class="avatarr">
+                                    </v-avatar>
+                                    <v-card-title>{{review.name}}</v-card-title>
                                     <v-card-title class="texti">{{review.title}}</v-card-title>
                                     <v-card-text class="tex">{{review.text}}</v-card-text>
-                                    <div><img class="imag" :src="review.img" /></div>
                                 </div>
+                                <div><img class="imag" :src="review.img" /></div>
                             </v-card>
                         </v-col>
                     </v-row>
@@ -107,20 +114,22 @@
     }
 </script>
 <style scoped>
+    .divProd{
+        z-index: 999;
+    }
     .review{
         margin-bottom:15px;
     }
-    .imagini{
-        width:220px;
+    .imagDesc{
+        width:270px;
         float:left;
         padding-right: 10px;
 
     }
     .imag{
         width:220px;
-        float:left;
-        padding-right: 10px;
-
+        float: right;
+        margin-left: 130px
     }
     .texti{
         font-family:"Arial Black";
@@ -135,12 +144,26 @@
     .ste{
         color: #ff9454;
         float: right;
+        margin-top: 17px;
     }
     .rat{
         float: right;
         font-size: 20px;
         padding: 3px;
-
+        margin-top: 13px;
     }
-
+    .stangaDivProd{
+        margin-right:7%;
+    }
+    .button {
+        margin-bottom: 30px;
+        text-align: center;
+        background-color: hsl(47, 95%, 49%);
+    }
+    .avatarr{
+        float:left;
+        font-size:32px;
+        height: 42px;
+        width: 42px;
+    }
 </style>

@@ -10,29 +10,28 @@
         ></v-progress-circular>
         <div class="d-flex flex-no-wrap" v-if="!loading">
             <div style="width:30%">
-                <div class="button">
-                    <add-product />
+                <div class="button" v-if="userIsAuthenticated">
+                    <add-product :catKey="catKey" />
                 </div>
                 <div class="zonaFiltre">
                     <div class="Filtre" style="padding:15px">
                         <H3 style="margin-bottom:8px">Cauta dupa stele</H3>
                         <div style="margin-top: 0px">
-                            <v-checkbox class="stele" v-model="checkbox" :label="`1 stea`"></v-checkbox>
-                            <v-checkbox class="stele" v-model="checkbox" :label="`2 stele`"></v-checkbox>
-                            <v-checkbox class="stele" v-model="checkbox" :label="`3 stele`"></v-checkbox>
-                            <v-checkbox class="stele" v-model="checkbox" :label="`4 stele`"></v-checkbox>
-                            <v-checkbox class="stele" v-model="checkbox" :label="`5 stele`"></v-checkbox>
+                            <v-checkbox class="stele" v-model="stea" value="stea1" :label="`1 stea`"></v-checkbox>
+                            <v-checkbox class="stele" v-model="stea" value="stea2" :label="`2 stele`"></v-checkbox>
+                            <v-checkbox class="stele" v-model="stea" value="stea3" :label="`3 stele`"></v-checkbox>
+                            <v-checkbox class="stele" v-model="stea" value="stea4" :label="`4 stele`"></v-checkbox>
+                            <v-checkbox class="stele" v-model="stea" value="stea5" :label="`5 stele`"></v-checkbox>
+                            <v-checkbox class="stele" v-model="allStea" :label="`Selecteaza tot`"></v-checkbox>
                         </div>
                     </div>
                     <div class="Filtre" style="padding:15px">
-                        <H3 style="margin-bottom:8px">Categorii</H3>
+                        <H3 style="margin-bottom:8px">Nr. de review-uri</H3>
                         <div style="margin-top: 0px">
-                            <v-checkbox class="stele" v-model="checkbox" :label="`Frigider`"></v-checkbox>
-                            <v-checkbox class="stele" v-model="checkbox" :label="`Fier de calcat`"></v-checkbox>
-                            <v-checkbox class="stele" v-model="checkbox" :label="`Aragaz`"></v-checkbox>
-                            <v-checkbox class="stele" v-model="checkbox" :label="`Masina de spalat`"></v-checkbox>
-                            <v-checkbox class="stele" v-model="checkbox" :label="`Microunde`"></v-checkbox>
-                            <v-checkbox class="stele" v-model="checkbox" :label="`Masina de spalat vase`"></v-checkbox>
+                            <v-checkbox class="stele" v-model="nr" value="nr1" :label="`0-5`"></v-checkbox>
+                            <v-checkbox class="stele" v-model="nr" value="nr2" :label="`5-10`"></v-checkbox>
+                            <v-checkbox class="stele" v-model="nr" value="nr3" :label="`10+`"></v-checkbox>
+                            <v-checkbox class="stele" v-model="allNr" :label="`Selecteaza tot`"></v-checkbox>
                         </div>
                     </div>
                 </div>
@@ -81,7 +80,11 @@
         },
         data () {
             return {
-                checkbox: false
+                stea:[],
+                nr:[],
+                allstea:false,
+                allnr:false,
+                catKey: this.id
             }
         },
         computed: {
@@ -90,6 +93,33 @@
             },
             loading () {
                 return this.$store.getters.loading
+            },
+            allStea: {
+                set: function () {
+                    this.allstea=!this.allstea;
+                    if(this.allstea){
+                        var nr = ["stea1","stea2","stea3","stea4","stea5"];
+                        this.stea=nr;
+                    }
+                    else{
+                        this.stea=[];
+                    }
+                }
+            },
+            allNr: {
+                set: function () {
+                    this.allnr=!this.allnr;
+                    if(this.allnr){
+                        var nr = ["nr1","nr2","nr3"];
+                        this.nr=nr;
+                    }
+                    else{
+                        this.nr=[];
+                    }
+                }
+            },
+            userIsAuthenticated () {
+                return this.$store.getters.user !== null && this.$store.getters.user !== undefined
             }
         },
         methods: {
