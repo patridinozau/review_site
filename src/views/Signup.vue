@@ -37,6 +37,8 @@
         <br />
         <div align="center">
           <v-text-field
+              clearable
+              prepend-inner-icon="mdi-account-circle"
               v-model="name"
               :error-messages="nameErrors"
               :counter="15"
@@ -47,6 +49,8 @@
           </v-text-field></div>
 
         <v-text-field
+            prepend-inner-icon="mdi-email"
+            clearable
             v-model="email"
             :error-messages="emailErrors"
             label="E-Mail"
@@ -56,6 +60,8 @@
         </v-text-field>
 
         <v-text-field
+            prepend-inner-icon="mdi-key"
+            clearable
             label="Parolă"
             type="password"
             v-model="password"

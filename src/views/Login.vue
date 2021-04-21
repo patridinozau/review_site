@@ -37,6 +37,8 @@
         <br />
 
         <v-text-field
+            prepend-inner-icon="mdi-email"
+            clearable
             v-model="email"
             :error-messages="emailErrors"
             label="E-Mail"
@@ -46,6 +48,8 @@
         </v-text-field>
 
         <v-text-field
+            prepend-inner-icon="mdi-key"
+            clearable
             label="Parolă"
             type="password"
             v-model="password"

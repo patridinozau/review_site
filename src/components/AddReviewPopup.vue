@@ -9,9 +9,10 @@
                 <link rel="preconnect" href="https://fonts.gstatic.com">
                 <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 
+              <div>
                 <form @submit.prevent="submitForm">
-                    <div @click="dialogadd = !dialogadd"><v-icon class="closeIcon">mdi-close</v-icon></div>
-                    <h1>Adauga un review!</h1>
+                  <div @click="dialogadd = !dialogadd"><v-icon class="closeIcon">mdi-close</v-icon></div>
+                  <h1>Adauga un review!</h1>
                     <br />
                     <div align="center">
                         <p>Acorda o nota:</p>
@@ -28,6 +29,7 @@
                         ></v-rating>
                         <hr />
                         <v-textarea
+                                prepend-inner-icon="mdi-lead-pencil"
                                 v-model="review"
                                 label="Review"
                                 auto-grow
@@ -37,8 +39,9 @@
                                 clearable
                         ></v-textarea>
                         <v-textarea
+                                prepend-inner-icon="mdi-format-title"
                                 v-model="titluReview"
-                                label="Titlu review"
+                                label="Descriere cu un cuvant"
                                 rows="1"
                                 no-resize
                                 required
@@ -47,6 +50,7 @@
                         ></v-textarea>
                         <div>
                             <v-file-input
+                                    prepend-inner-icon="mdi-image"
                                     label="Adaugati o imagine (optional)"
                                     dense
                                     show-size
@@ -58,13 +62,11 @@
                     </div>
                     <div align="center">
                         <br />
-                        <hr />
-                        <br />
                         <v-btn class="mr-4 " type="submit" :loading="loading">trimite</v-btn>
                         <v-btn @click="clear">golește</v-btn>
                     </div>
                 </form>
-
+              </div>
             </div>
         </v-card>
     </v-dialog>
@@ -160,6 +162,8 @@
     .closeIcon {
         align:right;
         float: right;
+        padding: 0;
+        margin: 0;
     }
     .closeIcon:hover {
         cursor:pointer;

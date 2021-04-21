@@ -17,6 +17,7 @@
                     <div align="center">
 
                         <v-text-field
+                                prepend-inner-icon="mdi-format-title"
                                 v-model="nume"
                                 label="Nume"
                                 :error-messages="nameErrors"
@@ -25,6 +26,7 @@
                         ></v-text-field>
 
                         <v-textarea
+                                prepend-inner-icon="mdi-lead-pencil"
                                 v-model="description"
                                 label="Descriere"
                                 auto-grow
@@ -35,6 +37,7 @@
                         ></v-textarea>
                         <div>
                             <v-file-input
+                                    prepend-inner-icon="mdi-format-title"
                                     label="Adaugati o imagine"
                                     dense
                                     required
@@ -45,6 +48,7 @@
                             <img :src="this.imageUrl" class="imagePreview" v-if="this.picture">
                         </div>
                         <v-text-field
+                                prepend-inner-icon="mdi-link"
                                 v-model="link"
                                 label="Link"
                                 required
@@ -53,8 +57,6 @@
 
                     </div>
                     <div align="center">
-                        <br />
-                        <hr />
                         <br />
                         <v-btn class="mr-4 " type="submit" :loading="loading">trimite</v-btn>
                         <v-btn @click="clear">golește</v-btn>
