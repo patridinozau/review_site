@@ -1,9 +1,8 @@
 <template>
-    <v-dialog v-model="dialogadd" width="600">
+    <v-dialog v-model="dialogadd" width="500">
         <template v-slot:activator="{ on }">
-            <v-btn class="homebutton text--black font-weight-bold" plain v-on="on">Adauga un produs nou</v-btn>
+            <v-btn class="homebutton text--black font-weight-bold" plain v-on="on">Adauga un review nou</v-btn>
         </template>
-
         <v-card>
             <div class="main">
                 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -12,22 +11,35 @@
 
                 <form @submit.prevent="submitForm">
                     <div @click="dialogadd = !dialogadd"><v-icon class="closeIcon">mdi-close</v-icon></div>
-                    <h1>Adauga un produs!</h1>
+                    <h1>Adauga un review!</h1>
                     <br />
                     <div align="center">
-
-                        <v-text-field
-                                v-model="nume"
-                                label="Nume"
-                                :error-messages="nameErrors"
-                                required
-                                clearable
-                        ></v-text-field>
-
+                        <p>Acorda o nota:</p>
+                        <v-rating class="ste"
+                                  background-color="warning lighten-1"
+                                  color="warning"
+                                  half-increments
+                                  hover
+                                  length="5"
+                                  size="40"
+                                  v-model="rating"
+                                  required
+                                  clearable
+                        ></v-rating>
+                        <hr />
                         <v-textarea
-                                v-model="description"
-                                label="Descriere"
+                                v-model="review"
+                                label="Review"
                                 auto-grow
+                                no-resize
+                                required
+                                :error-messages="descriptionErrors"
+                                clearable
+                        ></v-textarea>
+                        <v-textarea
+                                v-model="titluReview"
+                                label="Titlu review"
+                                rows="1"
                                 no-resize
                                 required
                                 :error-messages="descriptionErrors"
@@ -35,22 +47,14 @@
                         ></v-textarea>
                         <div>
                             <v-file-input
-                                    label="Adaugati o imagine"
+                                    label="Adaugati o imagine (optional)"
                                     dense
-                                    required
                                     show-size
                                     prepend-icon=""
                                     v-model="picture"
                             ></v-file-input>
                             <img :src="this.imageUrl" class="imagePreview" v-if="this.picture">
                         </div>
-                        <v-text-field
-                                v-model="link"
-                                label="Link"
-                                required
-                                clearable
-                        ></v-text-field>
-
                     </div>
                     <div align="center">
                         <br />
@@ -69,9 +73,7 @@
 <script>
     import { validationMixin } from 'vuelidate'
     import { required, maxLength, minLength } from 'vuelidate/lib/validators'
-
     export default {
-
         mixins: [validationMixin],
         validations: {
             name: { required, maxLength: maxLength(15), minLength: minLength(3) },
@@ -83,26 +85,26 @@
             }
         },
         data: () => ({
-            nume: '',
-            description: '',
+            review: '',
+            titluReview:'',
             imageUrl: null,
             picture: null,
             loading: false,
             dialogadd: false,
-            link: ''
+            rating: null
         }),
         watch : {
-          picture (value) {
-              if(value != null && value != undefined)
-              {
-                  const reader = new FileReader();
-                  const vm = this
-                  reader.addEventListener("load", function () {
-                      vm.imageUrl = this.result
-                  })
-                  reader.readAsDataURL(value)
-              }
-          },
+            picture (value) {
+                if(value != null && value != undefined)
+                {
+                    const reader = new FileReader();
+                    const vm = this
+                    reader.addEventListener("load", function () {
+                        vm.imageUrl = this.result
+                    })
+                    reader.readAsDataURL(value)
+                }
+            }
         },
         computed: {
             nameErrors () {
@@ -119,40 +121,31 @@
             },
             user () {
                 return this.$store.getters.user
-            },
+            }
         },
         methods: {
             submitForm () {
-                this.loading = true;
-                const det = {
-                    nume: this.nume,
-                    description: this.description,
-                    picture: this.picture,
-                    pictureName: this.picture.name,
-                    link: this.link,
-                    userKey: this.user.key,
-                    catKey: this.catKey
-                }
-                this.$store.dispatch('uploadProdus', det)
+
             },
             clear () {
                 this.$v.$reset()
-                this.nume = ''
-                this.description = ''
+                this.review = ''
                 this.loading = false
                 this.imageUrl = null
                 this.picture = null
-                this.link = ''
+                this.rating = 0
+                this.titluReview = ''
             },
         }
     }
-
-
 </script>
 
-
-<style>
-
+<style scoped>
+    .homebutton{
+        background-color: hsl(47, 95%, 49%);
+        margin-bottom: 30px;
+        margin-left:15px;
+    }
     .main {
         background-color: ghostwhite;
         min-height: 60vh;
@@ -164,11 +157,6 @@
         padding: 60px;
         font-family: 'Lato', sans-serif;
     }
-
-    .homebutton{
-        background-color: hsl(47, 95%, 49%);
-    }
-
     .closeIcon {
         align:right;
         float: right;
@@ -188,6 +176,4 @@
         display: flex;
         color: #cccccc;
     }
-
-
 </style>

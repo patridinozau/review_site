@@ -19,7 +19,7 @@ export default new Vuex.Store({
     produse: null,
     error: null,
     reviews: null,
-    prod: null
+    prod: null,
   },
   mutations: {
     newUser (state, payload) {
@@ -48,7 +48,7 @@ export default new Vuex.Store({
     },
     setProd (state, payload) {
       state.prod = payload
-    }
+    },
   },
   actions: {
     signUserUp ({commit}, payload) {
@@ -296,6 +296,11 @@ export default new Vuex.Store({
                 reviews: 0,
                 creatorKey: payload.userKey,
                 img: url
+              }).then((data) => {
+                commit('setLoading', false)
+              }).catch(err => {
+                commit('setLoading', false)
+                console.log(err)
               })
             })
 
@@ -333,7 +338,7 @@ export default new Vuex.Store({
     },
     theProd (state) {
       return state.prod
-    }
+    },
   },
   modules: {
   }

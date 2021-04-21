@@ -8,14 +8,15 @@
                 indeterminate
                 v-if="loading"
         ></v-progress-circular>
-        <br><br><br>
+        <br><br><br><br>
         <div v-if="!loading" style="z-index:999;position: relative;margin:auto;width:70%">
             <div>
                 <v-container>
                     <v-row>
                         <v-col>
-                            <div class="pa-7 mb-4 d-flex flex-no-wrap">
+                            <div>
                                 <div class="stangaDivProd">
+                                    <img class="imagDesc" :src="theProd[0].img" alt="alt text" />
                                     <div class="rat">
                                         ({{theProd[0].rating}})</div>
                                     <v-rating class="ste"
@@ -30,12 +31,13 @@
                                     <v-card-title class="texti">{{theProd[0].name}}</v-card-title>
                                     <v-card-subtitle class="tex">Rewiews: {{theProd[0].reviews}}</v-card-subtitle>
                                     <v-card-text class="tex">{{ theProd[0].descriere}}</v-card-text>
-                                    <v-btn href="https://www.google.com/" class="button text--black font-weight-bold" plain>
-                                        Link Produs
-                                    </v-btn>
-                                    <!--                                    <a target="_blank">Vezi pe site</a>-->
+                                    <div>
+                                        <v-btn href="https://www.google.com/" class="button text--black font-weight-bold" plain>
+                                            Link Produs
+                                        </v-btn>
+                                        <add-review-popup />
+                                    </div>
                                 </div>
-                                <div><img class="imagDesc" :src="theProd[0].img" alt="alt text" /></div>
                             </div>
                         </v-col>
                     </v-row>
@@ -77,11 +79,13 @@
 
 <script>
     import Navbar from "../components/Navbar";
+    import AddReviewPopup from "../components/AddReviewPopup";
     export default {
         name: "categorie",
         props: ['catId','prodId'],
         components: {
-            'navbar': Navbar
+            'navbar': Navbar,
+            'add-review-popup': AddReviewPopup
         },
         created() {
             this.$store.dispatch('loadProd', {
@@ -122,9 +126,8 @@
     }
     .imagDesc{
         width:270px;
-        float:left;
+        float:right;
         padding-right: 10px;
-
     }
     .imag{
         width:220px;
