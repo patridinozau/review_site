@@ -52,6 +52,36 @@
         </table>
       </div>
       <br><br>
+      <div style="margin:auto;width:60%">
+        <v-container>
+          <v-row>
+            <v-col>
+              <v-card class="pa-7 mb-4 d-flex flex-no-wrap" v-for="review in reviews" :key="review.id">
+                <div>
+                  <div class="rat">
+                    ({{review.rating}})</div>
+                  <v-rating class="ste"
+                            background-color="warning lighten-1"
+                            color="warning"
+                            half-increments
+                            length="5"
+                            readonly
+                            size="25"
+                            :value=review.rating
+                  ></v-rating>
+                  <v-avatar style="float: left">
+                    <img :src="review.userImg" class="avatarr">
+                  </v-avatar>
+                  <v-card-title class="titlu">{{review.name}}</v-card-title>
+                  <v-card-title class="texti">{{review.title}}</v-card-title>
+                  <v-card-text class="tex">{{review.text}}</v-card-text>
+                </div>
+                <div><img class="imag" :src="review.img" /></div>
+              </v-card>
+            </v-col>
+          </v-row>
+        </v-container>
+      </div>
     </v-main>
   </div>
 </template>
@@ -68,6 +98,7 @@ import Navbar from "../components/Navbar";
     }),
     created() {
       this.$store.dispatch('loadUsers')
+      this.$store.dispatch('loadUserReviews', this.id)
     },
     components: {
     'nav-bar': Navbar
@@ -82,6 +113,9 @@ import Navbar from "../components/Navbar";
     },
     loading () {
       return this.$store.getters.loading
+    },
+    reviews () {
+      return this.$store.getters.userReviews
     }
   }
 }
@@ -124,5 +158,47 @@ import Navbar from "../components/Navbar";
   .tableLine{
     width:100%;
     margin:auto;
+  }
+  .imag{
+    width:220px;
+    float: right;
+    margin-left: 130px
+  }
+  .texti{
+    padding:10px;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+  }
+  .tex{
+    font-size:15px;
+    padding:7px;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+
+  }
+
+  .titlu {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: bold;
+  }
+
+  .ste{
+    color: #ff9454;
+    float: right;
+    margin-top: 17px;
+  }
+  .rat{
+    float: right;
+    font-size: 20px;
+    padding: 3px;
+    margin-top: 13px;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+  }
+  .avatarr{
+    float:left;
+    font-size:32px;
+    height: 42px;
+    width: 42px;
   }
 </style>

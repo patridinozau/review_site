@@ -14,10 +14,10 @@
                     <div>
                       <v-row>
                         <v-col>
-                          <div><h2 style="float: left; justify-content: center; align-content: center; display: flex;">Frigider arctic AD54240M30W</h2></div>
+                          <div><h2 style="float: left; justify-content: center; align-content: center; display: flex;">{{ theProd.name }}</h2></div>
                         </v-col>
                         <v-col>
-                          <div><img class="imagine" src="../assets/aplicatii.jpg"/></div>
+                          <div><img class="imagine" :src="theProd.img"/></div>
                         </v-col>
                       </v-row>
                     </div>
@@ -44,7 +44,6 @@
                                 auto-grow
                                 no-resize
                                 required
-                                :error-messages="descriptionErrors"
                                 clearable
                         ></v-textarea>
                         <v-textarea
@@ -54,7 +53,6 @@
                                 rows="1"
                                 no-resize
                                 required
-                                :error-messages="descriptionErrors"
                                 clearable
                         ></v-textarea>
                         <div>
@@ -91,8 +89,8 @@
             description: {required, maxLength: maxLength(100)},
         },
         props: {
-            catKey: {
-                type: String
+            Ids: {
+                type: Object
             }
         },
         data: () => ({
@@ -102,7 +100,7 @@
             picture: null,
             loading: false,
             dialogadd: false,
-            rating: null
+            rating: 0
         }),
         watch : {
             picture (value) {
@@ -118,25 +116,28 @@
             }
         },
         computed: {
-            nameErrors () {
-                const errors = []
-                if (!this.$v.name.$dirty) return errors
-                !this.$v.name.required && errors.push('Numele produsului este obligatoriu')
-                return errors
-            },
-            descriptionErrors () {
-                const errors = []
-                if(!this.$v.description.$dirty) return errors
-                !this.$v.description.required && errors.push('Descrierea produsului este obligatorie')
-                return errors
-            },
             user () {
                 return this.$store.getters.user
+            },
+            theProd () {
+                return this.$store.getters.theProd
             }
         },
         methods: {
             submitForm () {
-
+                this.loading = true
+                const det = {
+                    rating: this.rating,
+                    review: this.review,
+                    titluReview: this.titluReview,
+                    picture: this.picture,
+                    userName: this.user.userName,
+                    userKey: this.user.key,
+                    catId: this.Ids.IdCat,
+                    prodId: this.Ids.IdProd,
+                    userImg: this.user.profileImg
+                }
+                this.$store.dispatch('uploadReview', det)
             },
             clear () {
                 this.$v.$reset()
@@ -193,7 +194,7 @@
 
     .imagine {
       float: right;
-      align-content: end;
+      align-content: flex-end;
       justify-content: center;
       display: flex;
       width:60%;

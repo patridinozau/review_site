@@ -17,9 +17,9 @@
                         <v-col>
                             <div>
                                 <div class="stangaDivProd">
-                                    <img class="imagDesc" :src="theProd[0].img" alt="alt text" />
+                                    <img class="imagDesc" :src="theProd.img" alt="alt text" />
                                     <div class="rat">
-                                        ({{theProd[0].rating}})</div>
+                                        ({{theProd.rating}})</div>
                                     <v-rating class="ste"
                                               background-color="warning lighten-1"
                                               color="warning"
@@ -27,16 +27,16 @@
                                               length="5"
                                               readonly
                                               size="25"
-                                              :value=theProd[0].rating
+                                              :value=theProd.rating
                                     ></v-rating>
-                                    <v-card-title class="titlu">{{theProd[0].name}}</v-card-title>
-                                    <v-card-subtitle class="tex">Rewiews: {{theProd[0].reviews}}</v-card-subtitle>
-                                    <v-card-text class="tex">{{ theProd[0].descriere}}</v-card-text>
+                                    <v-card-title class="titlu">{{theProd.name}}</v-card-title>
+                                    <v-card-subtitle class="tex">Rewiews: {{theProd.reviews}}</v-card-subtitle>
+                                    <v-card-text class="tex">{{ theProd.descriere}}</v-card-text>
                                     <div>
-                                        <v-btn href="https://www.google.com/" class="button text--black font-weight-bold" plain>
+                                        <v-btn :href="theProd.link" class="button text--black font-weight-bold" plain>
                                             Link Produs
                                         </v-btn>
-                                        <add-review-popup />
+                                        <add-review-popup :Ids="Ids" v-if="userIsAuthenticated" />
                                     </div>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@
                                               :value=review.rating
                                     ></v-rating>
                                     <v-avatar style="float: left">
-                                        <img src="../assets/darius.jpg" class="avatarr">
+                                        <img :src="review.userImg" class="avatarr">
                                     </v-avatar>
                                     <v-card-title class="titlu">{{review.name}}</v-card-title>
                                     <v-card-title class="texti">{{review.title}}</v-card-title>
@@ -101,7 +101,10 @@
         },
         data () {
             return {
-
+                Ids: {
+                    IdCat: this.catId,
+                    IdProd: this.prodId
+                }
             }
         },
         computed: {
@@ -113,6 +116,9 @@
             },
             theProd () {
                 return this.$store.getters.theProd
+            },
+            userIsAuthenticated () {
+                return this.$store.getters.user !== null && this.$store.getters.user !== undefined
             }
 
         }
@@ -126,9 +132,11 @@
         margin-bottom:15px;
     }
     .imagDesc{
-        width:270px;
+        width:300px;
+        max-height: 220px;
+        max-width: 300px;
         float:right;
-        padding-right: 10px;
+        margin: 20px;
     }
     .imag{
         width:220px;

@@ -145,10 +145,11 @@
       font-weight: bold;
     }
     .imagini{
-        width:220px;
-        float:left;
-        padding-right: 10px;
+        width: auto;
+        height: 110px;
+        float: left;
         cursor: pointer;
+        margin: 20px;
     }
     .texti{
         font-family: 'Arial Black', sans-serif;
@@ -157,8 +158,9 @@
 
     }
     .tex{
-        font-size:15px;
-        padding:7px;
+        font-size: 16px;
+        text-align: left;
+        padding-top: 8px;
         font-family: 'Lato', sans-serif;
         font-weight: bold;
     }

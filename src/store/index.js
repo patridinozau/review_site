@@ -20,6 +20,7 @@ export default new Vuex.Store({
     error: null,
     reviews: null,
     prod: null,
+    userReviews: null
   },
   mutations: {
     newUser (state, payload) {
@@ -49,6 +50,9 @@ export default new Vuex.Store({
     setProd (state, payload) {
       state.prod = payload
     },
+    setUserReviews (state, payload) {
+      state.userReviews = payload
+    }
   },
   actions: {
     signUserUp ({commit}, payload) {
@@ -240,9 +244,9 @@ export default new Vuex.Store({
       commit('setLoading', true)
       firebase.database().ref('/categorii/' + payload.catId + '/produse/' + payload.prodId)
           .once('value').then((data) => {
-        const prod = []
+
         const obj = data.val()
-        prod.push({
+        const info = {
           id: payload.prodId,
           name: obj.name,
           descriere: obj.descriere,
@@ -250,8 +254,8 @@ export default new Vuex.Store({
           reviews: obj.reviews,
           img: obj.img,
           link: obj.link
-        })
-        commit('setProd', prod)
+        }
+        commit('setProd', info)
         commit('setLoading', false)
 
       }).catch(err => {
@@ -272,7 +276,8 @@ export default new Vuex.Store({
             title: obj[key].title,
             rating: obj[key].rating,
             text: obj[key].text,
-            img: obj[key].img
+            img: obj[key].img,
+            userImg: obj[key].userImg
           })
         }
           commit('setReviews', reviews)
@@ -308,6 +313,98 @@ export default new Vuex.Store({
           }).catch(err => {
         console.log(err)
       })
+    },
+    uploadReview ({commit}, payload) {
+      commit('setLoading', true)
+      if(payload.picture != null && payload.picture != undefined) {
+        firebase.storage().ref('reviews_img/' + payload.picture.name).put(payload.picture)
+            .then((fileData) => {
+              fileData.ref.getDownloadURL().then((url) => {
+                firebase.database().ref('/categorii/' + payload.catId + '/produse/' +
+                payload.prodId + '/pareri').push({
+                  rating: payload.rating,
+                  text: payload.review,
+                  title: payload.titluReview,
+                  img: url,
+                  name: payload.userName,
+                  userImg: payload.userImg
+                }).then(() => {
+                  firebase.database().ref('/users/' + payload.userKey + '/reviews').push({
+                    rating: payload.rating,
+                    text: payload.review,
+                    title: payload.titluReview,
+                    img: url,
+                    name: payload.userName,
+                    userImg: payload.userImg
+                  }).then(() => {
+                    commit('setLoading', false)
+                  }).catch(err => {
+                    commit('setLoading', false)
+                    console.log(err)
+                  })
+                }).catch(err => {
+                  commit('setLoading', false)
+                  console.log(err)
+                })
+              }).catch(err => {
+                commit('setLoading', false)
+                console.log(err)
+              })
+            }).catch(err => {
+          commit('setLoading', false)
+          console.log(err)
+        })
+      }
+       else {
+        firebase.database().ref('/categorii/' + payload.catId + '/produse/' +
+            payload.prodId + '/pareri').push({
+          rating: payload.rating,
+          text: payload.review,
+          title: payload.titluReview,
+          img: '',
+          name: payload.userName,
+          userImg: payload.userImg
+        }).then(() => {
+          firebase.database().ref('/users/' + payload.userKey + '/reviews').push({
+            rating: payload.rating,
+            text: payload.review,
+            title: payload.titluReview,
+            img: '',
+            name: payload.userName,
+            userImg: payload.userImg
+          }).catch(err => {
+            commit('setLoading', false)
+            console.log(err)
+          })
+        }).catch(err => {
+          commit('setLoading', false)
+          console.log(err)
+        })
+      }
+    },
+    loadUserReviews ({commit}, payload) {
+      commit('setLoading', true)
+      firebase.database().ref('/users/' + payload + '/reviews').once('value')
+          .then((data) => {
+            const reviews = []
+            const obj = data.val()
+            for(let key in obj) {
+              reviews.push({
+                id: key,
+                img: obj[key].img,
+                name: obj[key].name,
+                rating: obj[key].rating,
+                text: obj[key].text,
+                title: obj[key].title,
+                userImg: obj[key].userImg
+              })
+              commit('setUserReviews', reviews)
+              commit('setLoading', false)
+            }
+          }).catch(err => {
+        commit('setLoading', true)
+        console.log(err)
+      })
     }
   },
   getters: {
@@ -339,6 +436,9 @@ export default new Vuex.Store({
     theProd (state) {
       return state.prod
     },
+    userReviews (state) {
+      return state.userReviews
+    }
   },
   modules: {
   }
