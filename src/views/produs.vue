@@ -66,7 +66,7 @@
                                     </v-avatar>
                                     <v-card-title class="titlu">{{review.name}}</v-card-title>
                                     <v-card-title class="texti">{{review.title}}</v-card-title>
-                                    <v-card-text class="tex">{{review.text}}</v-card-text>
+                                    <v-card-text class="tex">{{review.text | quotes}}</v-card-text>
                                 </div>
                                 <div><img class="imag" :src="review.img" /></div>
                             </v-card>
