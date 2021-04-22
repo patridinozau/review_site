@@ -135,7 +135,9 @@
                     userKey: this.user.key,
                     catId: this.Ids.IdCat,
                     prodId: this.Ids.IdProd,
-                    userImg: this.user.profileImg
+                    userImg: this.user.profileImg,
+                    newRating: this.$store.getters.theProd.rating + this.rating,
+                    newReviews: this.$store.getters.theProd.reviews + 1
                 }
                 this.$store.dispatch('uploadReview', det)
             },

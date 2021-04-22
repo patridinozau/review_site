@@ -43,7 +43,7 @@
                             <div><img @click="goToProduct(produs.id)" class="imagini" :src="produs.img" alt="alt text" /></div>
                             <div>
                                 <div class="rat" style="margin-top: 2px; font-family: 'Lato', sans-serif;">
-                                    ({{produs.rating}})</div>
+                                    ({{produs.rating / produs.reviews}})</div>
                                 <v-rating class="ste"
                                           background-color="warning lighten-1"
                                           color="warning"
@@ -51,7 +51,7 @@
                                           length="5"
                                           readonly
                                           size="25"
-                                          :value=produs.rating
+                                          :value=(produs.rating/produs.reviews)
                                 ></v-rating>
                                 <v-card-title @click="goToProduct(produs.id)" class="texti">{{ produs.name }}</v-card-title>
                                 <v-card-subtitle class="tex">Reviews: {{ produs.reviews}}</v-card-subtitle>

@@ -11,77 +11,79 @@
                 indeterminate
                 v-if="loading"
         ></v-progress-circular>
-        <table v-if="!loading">
-          <tr>
-            <td>
-              <img :src="user.profileImg" width="300" height="300" class="profilePic">
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p>Nume: {{ user.userName }}</p>
-              <p v-if="authUser">E-mail: {{ authUser.email }}</p>
-            </td>
-          </tr>
-          <tr>
-            <td><hr class="tableLine"></td>
-          </tr>
-          <br>
-          <tr>
-            <td>
-              <!--<H4>Biografie</H4><br>-->
-              <v-textarea
-                      solo
-                      clearable
-                      counter
-                      clear-icon="mdi-close-circle"
-                      append-icon="mdi-comment"
-                      no-resize
-                      label="Biografie"
-                      :rules="rules"
-                      rows="3"
-                      value=""
-              ></v-textarea>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p class="descriere">Nr de review-uri: </p>
-            </td>
-          </tr>
-        </table>
-      </div>
-      <br><br>
-      <div style="margin:auto;width:60%">
-        <v-container>
-          <v-row>
-            <v-col>
-              <v-card class="pa-7 mb-4 d-flex flex-no-wrap" v-for="review in reviews" :key="review.id">
-                <div>
-                  <div class="rat">
-                    ({{review.rating}})</div>
-                  <v-rating class="ste"
-                            background-color="warning lighten-1"
-                            color="warning"
-                            half-increments
-                            length="5"
-                            readonly
-                            size="25"
-                            :value=review.rating
-                  ></v-rating>
-                  <v-avatar style="float: left">
-                    <img :src="review.userImg" class="avatarr">
-                  </v-avatar>
-                  <v-card-title class="titlu">{{review.name}}</v-card-title>
-                  <v-card-title class="texti">{{review.title}}</v-card-title>
-                  <v-card-text class="tex">{{review.text}}</v-card-text>
-                </div>
-                <div><img class="imag" :src="review.img" /></div>
-              </v-card>
-            </v-col>
-          </v-row>
-        </v-container>
-      </div>
+        <div v-if="!loading">
+          <table >
+            <tr>
+              <td>
+                <img :src="user.profileImg" width="300" height="300" class="profilePic">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Nume: {{ user.userName }}</p>
+                <p v-if="authUser">E-mail: {{ authUser.email }}</p>
+              </td>
+            </tr>
+            <tr>
+              <td><hr class="tableLine"></td>
+            </tr>
+            <br>
+            <tr>
+              <td>
+                <!--<H4>Biografie</H4><br>-->
+                <v-textarea
+                        solo
+                        clearable
+                        counter
+                        clear-icon="mdi-close-circle"
+                        append-icon="mdi-comment"
+                        no-resize
+                        label="Biografie"
+                        :rules="rules"
+                        rows="3"
+                        value=""
+                ></v-textarea>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p class="descriere">Nr de review-uri: </p>
+              </td>
+            </tr>
+          </table>
+        <br><br>
+        <div style="margin:auto;width:60%">
+          <v-container>
+            <v-row>
+              <v-col>
+                <v-card class="pa-7 mb-4 d-flex flex-no-wrap" v-for="review in reviews" :key="review.id">
+                  <div>
+                    <div class="rat">
+                      ({{review.rating}})</div>
+                    <v-rating class="ste"
+                              background-color="warning lighten-1"
+                              color="warning"
+                              half-increments
+                              length="5"
+                              readonly
+                              size="25"
+                              :value=review.rating
+                    ></v-rating>
+                    <v-avatar style="float: left">
+                      <img :src="review.userImg" class="avatarr">
+                    </v-avatar>
+                    <v-card-title class="titlu">{{review.name}}</v-card-title>
+                    <v-card-title class="texti">{{review.title}}</v-card-title>
+                    <v-card-text class="tex">{{review.text}}</v-card-text>
+                  </div>
+                  <div><img class="imag" :src="review.img" /></div>
+                </v-card>
+              </v-col>
+            </v-row>
+          </v-container>
+        </div>
+        </div>
+        </div>
     </v-main>
   </div>
 </template>
@@ -97,8 +99,9 @@ import Navbar from "../components/Navbar";
       value: '',
     }),
     created() {
-      this.$store.dispatch('loadUsers')
       this.$store.dispatch('loadUserReviews', this.id)
+      this.$store.commit('setLoading', true)
+      this.$store.dispatch('loadUsers')
     },
     components: {
     'nav-bar': Navbar
