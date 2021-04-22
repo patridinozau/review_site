@@ -43,5 +43,5 @@ new Vue({
 }).$mount('#app')
 
 Vue.filter('quotes', function(value){
-  return '"' + value + '"';
+  return '" ' + value + ' "';
 });

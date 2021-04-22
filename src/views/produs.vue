@@ -49,7 +49,7 @@
         <v-container>
           <v-row>
             <v-col>
-              <v-card class="pa-7 mb-4 d-flex flex-no-wrap" v-for="review in reviews" :key="review.id">
+              <v-card class="pa-7 mb-4" style="overflow:hidden" v-for="review in reviews" :key="review.id">
                 <div>
                   <div style="float: right">
                     <div class="rat">
@@ -71,7 +71,7 @@
                   </v-avatar>
 
                   <v-card-title class="titlu">{{review.name}}</v-card-title>
-                  <div style="float: right;"><img class="imag" :src="review.img" /></div>
+                  <div style="float: right;"><v-img class="imag" :src="review.img" /></div>
                   <v-card-title class="texti">{{review.title}}</v-card-title>
                   <v-card-text class="tex">{{review.text | quotes}}</v-card-text>
 
@@ -144,27 +144,29 @@ export default {
   margin: 20px;
 }
 .imag{
-  width:220px;
+  max-width:220px;
+  max-height: 220px;
+  padding: 5px;
   /*float: right;*/
   /*margin-left: 130px;*/
-  justify-self: center;
-  display: flex;
+  /*display: flex;*/
 }
 .texti{
   padding:10px;
-  font-family: 'lato', sans-serif;
-  font-weight: bolder;
-  font-size: x-large;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 20px;
 }
 .tex{
-  font-size:15px;
-  padding:7px;
+  font-size:18px;
+  padding-top:7px;
+  padding-right: 10px;
   font-family: 'Lato', sans-serif;
   font-weight: bolder;
 }
 .titlu {
   font-family: 'Archivo Black', sans-serif;
   font-weight: bolder;
+  font-size: 25px;
 }
 .ste{
   color: #ff9454;
