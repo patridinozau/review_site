@@ -4,6 +4,8 @@
     <nav-bar />
 
     <div class="first_content">
+      <br /><br /><br />
+      <h3  class="ghidul text--black" style="outline: none; z-index:10;"><a class="ghidul text--black" href="#ghid" style="transition-duration: 1s; transition: all" data-scroll=""> Ghidul utilizatorului</a></h3>
       <div class="content">
         <div class="content-col content-text">
           <p>Doresti si tu sa lasi un review unui produs? Creeaza-ti un cont chiar acum</p>
@@ -25,7 +27,7 @@
         </div>
       </div>
 
-      <h3  style="outline: none;"><a href="#ghid" data-scroll=""> Ghidul utilizatorului</a></h3>
+
 
     </div>
 
@@ -232,6 +234,13 @@ export default {
 .content-image{
   margin-right: 30px;
   padding-right: 20px;
+}
+
+.ghidul {
+  text-decoration: none;
+  align-content: center;
+  display: flex;
+  text-align: center;
 }
 
 </style>
