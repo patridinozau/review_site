@@ -1,6 +1,8 @@
 <template>
   <div class="navbar white--text" v-if="userIsAuthenticated">
-    <span><img src="../assets/logoo.png" class="logo"></span>
+    <span>
+      <img style="cursor: pointer" @click="goToHome" src="../assets/logoo.png" class="logo">
+    </span>
 
     <div class="search-input">
       <table class="search-container">
@@ -119,6 +121,9 @@
       },
       toLogIn () {
         this.$router.push('/Login')
+      },
+      goToHome () {
+        this.$router.push('/')
       }
     }
   }

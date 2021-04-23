@@ -35,7 +35,7 @@
                   <v-card-text class="tex">{{ theProd.descriere}}</v-card-text>
                   <div>
                     <v-btn :href="theProd.link" class="button text--black font-weight-bold" plain>
-                      Link Produs
+                      Link
                     </v-btn>
                     <add-review-popup :Ids="Ids" v-if="userIsAuthenticated" />
                   </div>

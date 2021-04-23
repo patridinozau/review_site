@@ -30,24 +30,13 @@
           <br>
           <tr>
             <td>
-              <!--<H4>Biografie</H4><br>-->
-              <v-textarea
-                  solo
-                  clearable
-                  counter
-                  clear-icon="mdi-close-circle"
-                  append-icon="mdi-comment"
-                  no-resize
-                  label="Biografie"
-                  :rules="rules"
-                  rows="3"
-                  value=""
-              ></v-textarea>
+              <H4>Biografie:</H4><br>
+              <p></p>
             </td>
           </tr>
           <tr>
             <td>
-              <p class="descriere">Nr de review-uri: </p>
+              <p class="descriere">Nr de review-uri: {{ reviews.length }}</p>
             </td>
           </tr>
         </table>
@@ -103,8 +92,7 @@ import Navbar from "../components/Navbar";
 export default {
   props: ['id'],
   data: () => ({
-    rules: [v => v.length <= 75 || 'Maxim 75 de caractere'],
-    value: '',
+
   }),
   created() {
     this.$store.dispatch('loadUsers')
