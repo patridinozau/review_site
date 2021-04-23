@@ -45,3 +45,9 @@ new Vue({
 Vue.filter('quotes', function(value){
   return '" ' + value + ' "';
 });
+
+Vue.filter('toFixed', function (value) {
+  if((value * 100) % 10 != 0) return value.toFixed(2);
+   else if((value * 10) % 10 != 0) return value.toFixed(1);
+  return value;
+});

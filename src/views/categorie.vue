@@ -39,11 +39,12 @@
             <v-container>
                 <v-row>
                     <v-col>
-                        <v-card class="pa-7 mb-4" v-for="produs in filteredProd(produse)" :key="produs.id">
+                        <v-card class="pa-7 mb-4" v-for="produs in produse" :key="produs.id">
                             <div><img @click="goToProduct(produs.id)" class="imagini" :src="produs.img" alt="alt text" /></div>
                             <div>
                                 <div class="rat" style="margin-top: 2px; font-family: 'Lato', sans-serif;">
-                                    ({{produs.rating / produs.reviews}})</div>
+                                    ({{ (isNaN(produs.rating/produs.reviews)) ? 0 : (produs.rating/produs.reviews) | toFixed }})
+                                </div>
                                 <v-rating class="ste"
                                           background-color="warning lighten-1"
                                           color="warning"
@@ -130,8 +131,8 @@
             goToProduct (id) {
                 this.$router.push('/categorii/' + this.id + '/produs/' + id)
             },
-            filteredProd (produs) {
-                let tempProd = produs
+            filteredProd (value) {
+                let tempProd = value
 
                 tempProd = tempProd.filter((produs) => {
                     return (produs.rating <= this.ratmax && produs.rating >= this.ratmin)

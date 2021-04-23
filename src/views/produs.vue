@@ -3,13 +3,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
     <div style="height:350px;width:2000px;position: absolute;top: 0px;z-index: 1;" class="grey lighten-3"></div>
     <navbar />
-    <v-progress-circular
-        :size="50"
-        color="primary"
-        indeterminate
-        v-if="loading"
-    ></v-progress-circular>
     <br><br><br><br>
+    <v-progress-circular
+            :size="50"
+            color="primary"
+            indeterminate
+            v-if="loading"
+    ></v-progress-circular>
     <div v-if="!loading" style="z-index:999;position: relative;margin:auto;width:70%">
       <div>
         <v-container>
@@ -19,7 +19,8 @@
                 <div class="stangaDivProd">
                   <img class="imagDesc" :src="theProd.img" alt="alt text" />
                   <div class="rat">
-                    ({{theProd.rating / theProd.reviews}})</div>
+                    ({{ (isNaN(theProd.rating/theProd.reviews)) ? 0 : (theProd.rating/theProd.reviews) | toFixed }})
+                  </div>
                   <v-rating class="ste"
                             background-color="warning lighten-1"
                             color="warning"
@@ -125,7 +126,7 @@ export default {
     },
     userIsAuthenticated () {
       return this.$store.getters.user !== null && this.$store.getters.user !== undefined
-    }
+    },
   },
   methods: {
     goToUserProfile (id) {
