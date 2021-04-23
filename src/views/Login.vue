@@ -177,7 +177,7 @@ export default {
 
 .main {
   background: rgb(0,204,255);
-  background: linear-gradient(180deg, rgba(0,204,255,0.1) 0%, rgba(0,204,255,0.3) 100%);
+  background: linear-gradient(180deg, rgba(0,204,255,0.1) 0%, rgba(0,204,255,0.2) 100%);
   min-height: 100vh;
   display: flex;
   align-items: center;

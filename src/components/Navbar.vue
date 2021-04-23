@@ -64,7 +64,7 @@
     </div>
   </div>
   <div v-else class="navbar white--text">
-    <span><img src="../assets/logoo.png" class="logo"></span>
+    <span><img src="../assets/logoo.png" style="cursor: pointer" @click="goToHome" class="logo"></span>
     <div class="search-input">
       <table class="search-container">
         <tr>
