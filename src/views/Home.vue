@@ -24,6 +24,9 @@
           <v-btn v-else large class="homebutton text--black font-weight-bold" plain @click="toLogIn" >Autentifică-te</v-btn>
         </div>
       </div>
+
+      <h3  style="outline: none;"><a href="#ghid" data-scroll=""> Ghidul utilizatorului</a></h3>
+
     </div>
 
     <div style="padding:20px" class="separator"><v-icon>mdi-chevron-triple-left</v-icon></div>
@@ -76,6 +79,35 @@
             In plus, autentificarea se poate realiza prin intermediul E-Mailului, al contului de Google sau al contului de Facebook, asigurand, astfel, un proces rapid de logare.
           </p>
         </div>
+      </div>
+
+    </div>
+
+    <div style="padding:20px" class="separator"><v-icon>mdi-chevron-triple-left</v-icon></div>
+    <br />
+
+
+
+    <div class="content-part">
+      <div class="content-box">
+        <div class="content-title">
+          <h1 id="ghid">Ghidul utilizatorului</h1>
+        </div>
+
+        <div class="content-parag">
+          <p style="font-family: 'Lato', sans-serif; font-weight: bold;">
+              Este usor sa folosesti HonestReviews. Daca nu ai un cont sau nu esti autentificat, vei putea doar sa vezi produsele si review-urile, nu si sa adaugi altele.
+              Altfel, daca nu ai un cont, il poti creea apasand butonul "Inscrie-te", pe pagina de acasa sau un partea de sus a ecranului.
+              Daca ai deja un cont, te poti autentifica, apasand butonul "Autentifica-te".
+              Mai departe, pentru a adauga un produs, trebuie sa apesi pe butonul "Categorii" si sa selectezi categoria in care se incadreaza acesta.
+              Pentru a-l adauga, trebuie doar sa completezi formularul ("Adauga un produs").
+              Dupa ce produsul a fost agaugat, in cazul in care nu exista deja, facand click pe el, ajungi la pagina unde vezi review-urile existente, si unde poti accesa formularul pentru review.
+          </p>
+        </div>
+      </div>
+
+      <div class="content-image">
+        <img src="../assets/calculator.jpg" />
       </div>
 
     </div>
