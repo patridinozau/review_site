@@ -11,6 +11,7 @@
             indeterminate
             v-if="loading"
         ></v-progress-circular>
+
         <table v-if="!loading">
           <tr>
             <td>
@@ -55,6 +56,7 @@
           <v-container>
             <v-row>
               <v-col>
+
                 <v-card class="pa-7 mb-4" style="overflow:hidden" v-for="review in reviews" :key="review.id">
                   <div>
                     <div style="float: right">

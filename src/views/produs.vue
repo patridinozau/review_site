@@ -3,13 +3,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
     <div style="height:350px;width:2000px;position: absolute;top: 0px;z-index: 1;" class="grey lighten-3"></div>
     <navbar />
-    <v-progress-circular
-        :size="50"
-        color="primary"
-        indeterminate
-        v-if="loading"
-    ></v-progress-circular>
     <br><br><br><br>
+    <v-progress-circular
+            :size="50"
+            color="primary"
+            indeterminate
+            v-if="loading"
+    ></v-progress-circular>
     <div v-if="!loading" style="z-index:999;position: relative;margin:auto;width:70%">
       <div>
         <v-container>
@@ -19,7 +19,8 @@
                 <div class="stangaDivProd">
                   <img class="imagDesc" :src="theProd.img" alt="alt text" />
                   <div class="rat">
-                    ({{theProd.rating}})</div>
+                    ({{ (isNaN(theProd.rating/theProd.reviews)) ? 0 : (theProd.rating/theProd.reviews) | toFixed }})
+                  </div>
                   <v-rating class="ste"
                             background-color="warning lighten-1"
                             color="warning"
@@ -27,7 +28,7 @@
                             length="5"
                             readonly
                             size="25"
-                            :value=theProd.rating
+                            :value=(theProd.rating/theProd.reviews)
                   ></v-rating>
                   <v-card-title class="titlu">{{theProd.name}}</v-card-title>
                   <v-card-subtitle class="tex">Rewiews: {{theProd.reviews}}</v-card-subtitle>
@@ -66,12 +67,12 @@
 
                   </div>
 
-                  <v-avatar style="float: left">
+                  <v-avatar style="float: left; cursor: pointer" @click="goToUserProfile(review.userKey)">
                     <img :src="review.userImg" class="avatarr">
                   </v-avatar>
 
                   <v-card-title class="titlu">{{review.name}}</v-card-title>
-                  <div style="float: right;"><v-img class="imag" :src="review.img" /></div>
+                  <div v-if="review.img" style="float: right;"><v-img class="imag" :src="review.img" /></div>
                   <v-card-title class="texti">{{review.title}}</v-card-title>
                   <v-card-text class="tex">{{review.text | quotes}}</v-card-text>
 
@@ -125,6 +126,11 @@ export default {
     },
     userIsAuthenticated () {
       return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+    },
+  },
+  methods: {
+    goToUserProfile (id) {
+      this.$router.push('/user/' + id)
     }
   }
 }

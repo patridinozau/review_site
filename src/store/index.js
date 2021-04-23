@@ -277,7 +277,8 @@ export default new Vuex.Store({
             rating: obj[key].rating,
             text: obj[key].text,
             img: obj[key].img,
-            userImg: obj[key].userImg
+            userImg: obj[key].userImg,
+            userKey: obj[key].userKey
           })
         }
           commit('setReviews', reviews)
@@ -327,7 +328,8 @@ export default new Vuex.Store({
                   title: payload.titluReview,
                   img: url,
                   name: payload.userName,
-                  userImg: payload.userImg
+                  userImg: payload.userImg,
+                  userKey: payload.userKey
                 }).then(() => {
                   firebase.database().ref('/users/' + payload.userKey + '/reviews').push({
                     rating: payload.rating,
@@ -335,8 +337,17 @@ export default new Vuex.Store({
                     title: payload.titluReview,
                     img: url,
                     name: payload.userName,
-                    userImg: payload.userImg
+                    userImg: payload.userImg,
+                    userKey: payload.userKey
                   }).then(() => {
+                    firebase.database().ref('/categorii/' + payload.catId + '/produse/' +
+                    payload.prodId).update({
+                      rating: payload.newRating,
+                      reviews: payload.newReviews
+                    }).catch(err => {
+                      commit('setLoading', false)
+                      console.log(err)
+                    })
                     commit('setLoading', false)
                   }).catch(err => {
                     commit('setLoading', false)
@@ -363,7 +374,8 @@ export default new Vuex.Store({
           title: payload.titluReview,
           img: '',
           name: payload.userName,
-          userImg: payload.userImg
+          userImg: payload.userImg,
+          userKey: payload.userKey
         }).then(() => {
           firebase.database().ref('/users/' + payload.userKey + '/reviews').push({
             rating: payload.rating,
@@ -371,7 +383,17 @@ export default new Vuex.Store({
             title: payload.titluReview,
             img: '',
             name: payload.userName,
-            userImg: payload.userImg
+            userImg: payload.userImg,
+            userKey: payload.userKey
+          }).then(() => {
+            firebase.database().ref('/categorii/' + payload.catId + '/produse/' +
+                payload.prodId).update({
+              rating: payload.newRating,
+              reviews: payload.newReviews
+            }).catch(err => {
+              commit('setLoading', false)
+              console.log(err)
+            })
           }).catch(err => {
             commit('setLoading', false)
             console.log(err)
@@ -396,7 +418,7 @@ export default new Vuex.Store({
                 rating: obj[key].rating,
                 text: obj[key].text,
                 title: obj[key].title,
-                userImg: obj[key].userImg
+                userImg: obj[key].userImg,
               })
               commit('setUserReviews', reviews)
               commit('setLoading', false)
