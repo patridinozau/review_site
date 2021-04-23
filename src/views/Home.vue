@@ -5,7 +5,7 @@
 
     <div class="first_content">
       <br /><br /><br />
-      <h3  class="ghidul text--black" style="outline: none; z-index:10;"><a class="ghidul text--black" href="#ghid" style="transition-duration: 1s; transition: all" data-scroll=""> Ghidul utilizatorului</a></h3>
+      <h3  class="ghidul" style="outline: none; z-index:10;"><a class="ghidul" href="#ghid" style="transition-duration: 1s; transition: all" data-scroll=""> Ghidul utilizatorului</a></h3>
       <div class="content">
         <div class="content-col content-text">
           <p>Doresti si tu sa lasi un review unui produs? Creeaza-ti un cont chiar acum</p>
@@ -239,8 +239,18 @@ export default {
 .ghidul {
   text-decoration: none;
   align-content: center;
-  display: flex;
   text-align: center;
 }
-
+.ghidul a:link{
+  color:black;
+}
+.ghidul a:visited{
+  color:black;
+}
+.ghidul a:hover{
+  color:gray;
+}
+.ghidul a:active{
+  color:black;
+}
 </style>
