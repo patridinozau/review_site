@@ -153,7 +153,6 @@ export default {
   max-width:220px;
   max-height: 220px;
   padding: 5px;
-
 }
 .texti{
   padding:10px;
