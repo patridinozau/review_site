@@ -1,9 +1,17 @@
 <template>
-  <v-main class="">
+  <v-main >
 
     <nav-bar />
 
     <div class="first_content">
+      <br /><br /><br />
+
+      <div align="center" class="mt-3">
+          <a href="#ghid" class="ghidul">
+            <span class="ma-4 font-weight-bold" style="color: black;">Ghidul utilizatorului</span>
+          </a>
+      </div>
+
       <div class="content">
         <div class="content-col content-text">
           <p>Doresti si tu sa lasi un review unui produs? Creeaza-ti un cont chiar acum</p>
@@ -24,6 +32,9 @@
           <v-btn v-else large class="homebutton text--black font-weight-bold" plain @click="toLogIn" >Autentifică-te</v-btn>
         </div>
       </div>
+
+
+
     </div>
 
     <div style="padding:20px" class="separator"><v-icon>mdi-chevron-triple-left</v-icon></div>
@@ -80,6 +91,39 @@
 
     </div>
 
+    <div style="padding:20px" class="separator"><v-icon>mdi-chevron-triple-left</v-icon></div>
+    <br />
+
+
+
+    <div class="content-part">
+      <div class="content-box">
+        <div class="content-title">
+          <h1 id="ghid">Ghidul utilizatorului</h1>
+        </div>
+
+        <div class="content-parag">
+          <p style="font-family: 'Lato', sans-serif; font-weight: bold;">
+              Este usor sa folosesti HonestReviews. Daca nu ai un cont sau nu esti autentificat, vei putea doar sa vezi produsele si review-urile, nu si sa adaugi altele.
+              Altfel, daca nu ai un cont, il poti creea apasand butonul "Inscrie-te", pe pagina de acasa sau un partea de sus a ecranului.
+              Daca ai deja un cont, te poti autentifica, apasand butonul "Autentifica-te".
+              Mai departe, pentru a adauga un produs, trebuie sa apesi pe butonul "Categorii" si sa selectezi categoria in care se incadreaza acesta.
+              Pentru a-l adauga, trebuie doar sa completezi formularul ("Adauga un produs").
+              Dupa ce produsul a fost agaugat, in cazul in care nu exista deja, facand click pe el, ajungi la pagina unde vezi review-urile existente, si unde poti accesa formularul pentru review.
+          </p>
+          <br />
+          <v-btn @click="goToCat" large class="homebutton text--black font-weight-bold" plain>
+            Categorii
+          </v-btn>
+        </div>
+      </div>
+
+      <div class="content-image">
+        <img src="../assets/calculator.jpg" />
+      </div>
+
+    </div>
+
   </v-main>
 </template>
 
@@ -87,6 +131,8 @@
 import Signup from "./Signup";
 import Login from "./Login";
 import Navbar from "../components/Navbar";
+
+
 export default {
   components: {
     'sign-up': Signup,
@@ -99,6 +145,9 @@ export default {
     },
     toLogIn () {
       this.$router.push('/Login')
+    },
+    goToCat () {
+      this.$router.push('/categorii/')
     }
   },
   computed: {
@@ -135,7 +184,7 @@ export default {
 }
 .content {
   padding: 50px 50px 0px 50px;
-  margin: 50px 50px 0px 50px;
+  margin: 5px 50px 0px 50px;
   text-align: center;
   justify-content: space-between;
   display: flex;
@@ -176,6 +225,7 @@ export default {
   align-items: center;
   padding: 40px;
   margin: 30px;
+
 }
 .img {
   width: 100%;
@@ -202,4 +252,16 @@ export default {
   padding-right: 20px;
 }
 
+.ghidul {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid black;
+  width: 300px;
+  border-radius: 10px;
+  transition-duration: 1s;
+  transition: all;
+  text-decoration: none;
+  margin-top: 10px;
+  color: black;
+}
 </style>
