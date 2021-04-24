@@ -39,6 +39,9 @@
             <v-container>
                 <v-row>
                     <v-col>
+                        <div align="center" class="cattitle">
+                            {{ categorie.numeCategorie }}
+                        </div>
                         <v-card class="pa-7 mb-4" v-for="produs in produse" :key="produs.id">
                             <div><img @click="goToProduct(produs.id)" class="imagini" :src="produs.img" alt="alt text" /></div>
                             <div>
@@ -126,6 +129,7 @@
             userIsAuthenticated () {
                 return this.$store.getters.user !== null && this.$store.getters.user !== undefined
             },
+
         },
         methods: {
             goToProduct (id) {

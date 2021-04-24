@@ -1,11 +1,17 @@
 <template>
-  <v-main class="">
+  <v-main >
 
     <nav-bar />
 
     <div class="first_content">
       <br /><br /><br />
-      <h3  class="ghidul" style="outline: none; z-index:10;"><a class="ghidul" href="#ghid" style="transition-duration: 1s; transition: all" data-scroll=""> Ghidul utilizatorului</a></h3>
+
+      <div align="center" class="mt-3">
+          <a href="#ghid" class="ghidul">
+            <span class="ma-4 font-weight-bold" style="color: black;">Ghidul utilizatorului</span>
+          </a>
+      </div>
+
       <div class="content">
         <div class="content-col content-text">
           <p>Doresti si tu sa lasi un review unui produs? Creeaza-ti un cont chiar acum</p>
@@ -105,6 +111,10 @@
               Pentru a-l adauga, trebuie doar sa completezi formularul ("Adauga un produs").
               Dupa ce produsul a fost agaugat, in cazul in care nu exista deja, facand click pe el, ajungi la pagina unde vezi review-urile existente, si unde poti accesa formularul pentru review.
           </p>
+          <br />
+          <v-btn @click="goToCat" large class="homebutton text--black font-weight-bold" plain>
+            Categorii
+          </v-btn>
         </div>
       </div>
 
@@ -121,6 +131,8 @@
 import Signup from "./Signup";
 import Login from "./Login";
 import Navbar from "../components/Navbar";
+
+
 export default {
   components: {
     'sign-up': Signup,
@@ -133,6 +145,9 @@ export default {
     },
     toLogIn () {
       this.$router.push('/Login')
+    },
+    goToCat () {
+      this.$router.push('/categorii/')
     }
   },
   computed: {
@@ -169,7 +184,7 @@ export default {
 }
 .content {
   padding: 50px 50px 0px 50px;
-  margin: 50px 50px 0px 50px;
+  margin: 5px 50px 0px 50px;
   text-align: center;
   justify-content: space-between;
   display: flex;
@@ -210,6 +225,7 @@ export default {
   align-items: center;
   padding: 40px;
   margin: 30px;
+
 }
 .img {
   width: 100%;
@@ -237,20 +253,15 @@ export default {
 }
 
 .ghidul {
-  text-decoration: none;
-  align-content: center;
   text-align: center;
-}
-.ghidul a:link{
-  color:black;
-}
-.ghidul a:visited{
-  color:black;
-}
-.ghidul a:hover{
-  color:gray;
-}
-.ghidul a:active{
-  color:black;
+  padding: 10px;
+  border: 1px solid black;
+  width: 300px;
+  border-radius: 10px;
+  transition-duration: 1s;
+  transition: all;
+  text-decoration: none;
+  margin-top: 10px;
+  color: black;
 }
 </style>
