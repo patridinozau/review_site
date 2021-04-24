@@ -39,8 +39,8 @@
             <v-container>
                 <v-row>
                     <v-col>
-                        <div align="center" class="cattitle">
-
+                        <div align="center" class="cattitle mb-7">
+                            {{ numeCat }} ({{ produse.length }})
                         </div>
                         <v-card class="pa-7 mb-4" v-for="produs in produse" :key="produs.id">
                             <div><img @click="goToProduct(produs.id)" class="imagini" :src="produs.img" alt="alt text" /></div>
@@ -81,6 +81,7 @@
         },
         created () {
             this.$store.dispatch('loadProduse', this.id)
+            this.$store.dispatch('loadCatName', this.id)
         },
         data () {
             return {
@@ -129,7 +130,9 @@
             userIsAuthenticated () {
                 return this.$store.getters.user !== null && this.$store.getters.user !== undefined
             },
-
+            numeCat () {
+                return this.$store.getters.numeCat
+            }
         },
         methods: {
             goToProduct (id) {
@@ -212,5 +215,8 @@
     .button {
         margin-bottom: 30px;
         text-align: center;
+    }
+    .cattitle{
+        font-size: 30px;
     }
 </style>

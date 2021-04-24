@@ -20,7 +20,8 @@ export default new Vuex.Store({
     error: null,
     reviews: null,
     prod: null,
-    userReviews: null
+    userReviews: null,
+    numeCat: null
   },
   mutations: {
     newUser (state, payload) {
@@ -52,6 +53,9 @@ export default new Vuex.Store({
     },
     setUserReviews (state, payload) {
       state.userReviews = payload
+    },
+    setNumeCat (state, payload) {
+      state.numeCat = payload
     }
   },
   actions: {
@@ -427,6 +431,17 @@ export default new Vuex.Store({
         commit('setLoading', true)
         console.log(err)
       })
+    },
+    loadCatName ({commit}, payload) {
+      commit('setLoading', true)
+      firebase.database().ref('/categorii/' + payload).once('value').then((data) =>{
+        const numeCategorie = data.val().numeCategorie
+        commit('setNumeCat', numeCategorie)
+        commit('setLoading', false)
+      }).catch(err => {
+        commit('setLoading', false)
+        console.log(err)
+      })
     }
   },
   getters: {
@@ -460,6 +475,9 @@ export default new Vuex.Store({
     },
     userReviews (state) {
       return state.userReviews
+    },
+    numeCat (state) {
+      return state.numeCat
     }
   },
   modules: {
