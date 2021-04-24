@@ -52,13 +52,13 @@ const routes = [
     name: 'User',
     props: true,
     component: User,
-    beforeEnter: (to, from, next) => {
-      if (store.getters.user) {
-        next()
-      } else {
-        next('/Login')
-      }
-    }
+    // beforeEnter: (to, from, next) => {
+    //   if (store.getters.user) {
+    //     next()
+    //   } else {
+    //     next('/Login')
+    //   }
+    // }
   },
   {
     path: '/categorii',

@@ -36,7 +36,8 @@
           </tr>
           <tr>
             <td>
-              <p class="descriere">Nr de review-uri: {{ reviews.length }}</p>
+              <p v-if="reviews" class="descriere">Nr de review-uri: {{ reviews.length }}</p>
+              <p v-else class="descriere">Nr de review-uri: 0</p>
             </td>
           </tr>
         </table>
@@ -106,8 +107,10 @@ export default {
       return this.$store.getters.someUser(this.id)
     },
     authUser () {
-      if(this.$store.getters.user.key === this.$store.getters.someUser(this.id).id)
-        return this.$store.getters.user
+      if(this.$store.getters.user) {
+        if(this.$store.getters.user.key === this.$store.getters.someUser(this.id).id)
+          return this.$store.getters.user
+      }
     },
     loading () {
       return this.$store.getters.loading
